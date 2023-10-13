@@ -13,6 +13,7 @@
 		43FEA9132AD8E05C000B0E2A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43FEA9112AD8E05C000B0E2A /* Main.storyboard */; };
 		43FEA9152AD8E05E000B0E2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 43FEA9142AD8E05E000B0E2A /* Assets.xcassets */; };
 		43FEA9182AD8E05E000B0E2A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43FEA9162AD8E05E000B0E2A /* LaunchScreen.storyboard */; };
+		43FEA9202AD8E1B3000B0E2A /* CreateEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43FEA91F2AD8E1B3000B0E2A /* CreateEntryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		43FEA9142AD8E05E000B0E2A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		43FEA9172AD8E05E000B0E2A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		43FEA9192AD8E05E000B0E2A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43FEA91F2AD8E1B3000B0E2A /* CreateEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEntryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		43FEA90A2AD8E05C000B0E2A /* SongOfTheDay */ = {
 			isa = PBXGroup;
 			children = (
-				43FEA90B2AD8E05C000B0E2A /* AppDelegate.swift */,
-				43FEA90D2AD8E05C000B0E2A /* SceneDelegate.swift */,
-				43FEA90F2AD8E05C000B0E2A /* ViewController.swift */,
+				43FEA9222AD8E1C6000B0E2A /* Delegates */,
+				43FEA9212AD8E1BE000B0E2A /* View Controllers */,
 				43FEA9112AD8E05C000B0E2A /* Main.storyboard */,
 				43FEA9142AD8E05E000B0E2A /* Assets.xcassets */,
 				43FEA9162AD8E05E000B0E2A /* LaunchScreen.storyboard */,
 				43FEA9192AD8E05E000B0E2A /* Info.plist */,
 			);
 			path = SongOfTheDay;
+			sourceTree = "<group>";
+		};
+		43FEA9212AD8E1BE000B0E2A /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				43FEA91F2AD8E1B3000B0E2A /* CreateEntryViewController.swift */,
+				43FEA90F2AD8E05C000B0E2A /* ViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		43FEA9222AD8E1C6000B0E2A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				43FEA90B2AD8E05C000B0E2A /* AppDelegate.swift */,
+				43FEA90D2AD8E05C000B0E2A /* SceneDelegate.swift */,
+			);
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +160,7 @@
 				43FEA9102AD8E05C000B0E2A /* ViewController.swift in Sources */,
 				43FEA90C2AD8E05C000B0E2A /* AppDelegate.swift in Sources */,
 				43FEA90E2AD8E05C000B0E2A /* SceneDelegate.swift in Sources */,
+				43FEA9202AD8E1B3000B0E2A /* CreateEntryViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
