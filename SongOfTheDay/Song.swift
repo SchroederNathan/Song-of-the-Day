@@ -8,7 +8,7 @@
 import Foundation
 
 struct Songs: Codable {
-    var data: [Song]
+    var results: [Song]
 }
 
 struct Song: Codable, Hashable {
