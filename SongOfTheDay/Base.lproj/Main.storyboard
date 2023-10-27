@@ -20,7 +20,7 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXY-SV-tOu">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Itf-kX-31r">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Itf-kX-31r">
                                     <size key="itemSize" width="175" height="275"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -34,16 +34,16 @@
                                             <rect key="frame" x="0.0" y="0.0" width="175" height="275"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uwc-0U-pwX">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uwc-0U-pwX">
                                                     <rect key="frame" x="10" y="10" width="155" height="255"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cc-cw-fGG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="197.33333333333334"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="182.33333333333334"/>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NR1-no-1JA">
-                                                            <rect key="frame" x="0.0" y="197.33333333333334" width="155" height="15.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="187.33333333333334" width="155" height="15.666666666666657"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name • Song name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz5-3b-Z4K">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name • Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz5-3b-Z4K">
                                                                     <rect key="frame" x="0.0" y="0.0" width="155" height="15.666666666666666"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                     <nil key="textColor"/>
@@ -52,7 +52,7 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2I-wW-29X">
-                                                            <rect key="frame" x="0.0" y="213" width="155" height="30"/>
+                                                            <rect key="frame" x="0.0" y="208" width="155" height="30"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-XF-2DT">
                                                                     <rect key="frame" x="0.0" y="0.99999999999999822" width="30" height="28.666666666666664"/>
@@ -67,15 +67,15 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emx-hA-gbq">
-                                                                    <rect key="frame" x="60" y="0.0" width="65" height="30"/>
+                                                                    <rect key="frame" x="60" y="0.0" width="75" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fC-mgy">
-                                                                    <rect key="frame" x="125" y="3" width="30" height="24.333333333333332"/>
+                                                                    <rect key="frame" x="135" y="3" width="20" height="24.333333333333332"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="30" id="gRH-nP-o2a"/>
+                                                                        <constraint firstAttribute="width" constant="20" id="gRH-nP-o2a"/>
                                                                     </constraints>
                                                                 </imageView>
                                                             </subviews>
@@ -95,6 +95,12 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="9Pi-ax-3Yj" secondAttribute="trailing" id="D8e-ad-Pbn"/>
+                                                        <constraint firstItem="NR1-no-1JA" firstAttribute="leading" secondItem="uwc-0U-pwX" secondAttribute="leading" id="GIe-do-ZjP"/>
+                                                        <constraint firstAttribute="trailing" secondItem="NR1-no-1JA" secondAttribute="trailing" id="iS8-MU-8k3"/>
+                                                        <constraint firstItem="9Pi-ax-3Yj" firstAttribute="leading" secondItem="uwc-0U-pwX" secondAttribute="leading" id="w7n-U5-Fa4"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -104,12 +110,13 @@
                                                 <constraint firstItem="uwc-0U-pwX" firstAttribute="top" secondItem="Yll-gf-ZiM" secondAttribute="top" constant="10" id="sRC-eS-HPS"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <size key="customSize" width="175" height="275"/>
                                         <connections>
                                             <outlet property="badDayButton" destination="izq-6H-On9" id="ci2-K9-YWz"/>
                                             <outlet property="goodDayButton" destination="mA3-XF-2DT" id="Wy8-HR-5Eq"/>
                                             <outlet property="journalDate" destination="2tz-Tu-3pr" id="pnN-Bb-sg0"/>
-                                            <outlet property="songArtwork" destination="Yll-gf-ZiM" id="c3u-Bf-o9i"/>
+                                            <outlet property="songArtwork" destination="2cc-cw-fGG" id="tWw-fM-gUf"/>
                                             <outlet property="songInfo" destination="kz5-3b-Z4K" id="VzV-ru-xoR"/>
                                         </connections>
                                     </collectionViewCell>
@@ -125,7 +132,12 @@
                             <constraint firstItem="oXY-SV-tOu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eFu-OK-TWl"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Journal Entries" id="wg5-cG-MwS"/>
+                    <navigationItem key="navigationItem" title="Journal Entries" id="wg5-cG-MwS">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" image="pencil" catalog="system" id="5h6-hX-gKq"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="oXY-SV-tOu" id="Sbl-is-GRD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -209,6 +221,7 @@
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="book.pages.fill" catalog="system" width="107" height="128"/>
         <image name="face.smiling" catalog="system" width="128" height="123"/>
+        <image name="pencil" catalog="system" width="128" height="113"/>
         <image name="plus.square.fill.on.square.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

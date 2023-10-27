@@ -9,7 +9,8 @@ import UIKit
 
 class JournalEntryCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet var songArtwork: UIView!
+    
+    @IBOutlet var songArtwork: UIImageView!
     @IBOutlet var songInfo: UILabel!
     @IBOutlet var goodDayButton: UIImageView!
     @IBOutlet var badDayButton: UIImageView!
