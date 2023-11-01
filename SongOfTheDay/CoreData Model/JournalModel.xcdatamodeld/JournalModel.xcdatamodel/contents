@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22225" systemVersion="23A344" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="Journal" representedClassName="Journal" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="goodMood" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <relationship name="song" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Song" inverseName="journal" inverseEntity="Song"/>
+    </entity>
+    <entity name="Song" representedClassName="Song" syncable="YES">
+        <attribute name="artistName" optional="YES" attributeType="String"/>
+        <attribute name="artworkUrl100" optional="YES" attributeType="String"/>
+        <attribute name="collectionName" optional="YES" attributeType="String"/>
+        <attribute name="previewUrl" optional="YES" attributeType="String"/>
+        <attribute name="trackName" optional="YES" attributeType="String"/>
+        <relationship name="journal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journal" inverseName="song" inverseEntity="Journal"/>
+    </entity>
+</model>

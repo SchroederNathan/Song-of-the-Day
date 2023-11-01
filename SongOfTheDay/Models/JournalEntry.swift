@@ -8,10 +8,10 @@
 import Foundation
 import UIKit
 
-struct JournalEntry: Hashable {
-    var song: Song?
-    var goodMood: Bool
-    var text: String
-    var Date: Date
-    
-}
+//struct JournalEntry: Hashable {
+//    var song: Song?
+//    var goodMood: Bool
+//    var text: String
+//    var Date: Date
+//    
+//}

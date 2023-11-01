@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct Songs: Codable {
-    var results: [Song]
-}
-
-struct Song: Codable, Hashable {
-    var artistName: String
-    var collectionName: String
-    var trackName: String
-    var previewUrl: String
-    var artworkUrl100: String
-}
+//struct Songs: Codable {
+//    var results: [Song]
+//}
+//
+//struct Song: Codable, Hashable {
+//    var artistName: String
+//    var collectionName: String
+//    var trackName: String
+//    var previewUrl: String
+//    var artworkUrl100: String
+//}
