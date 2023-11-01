@@ -8,9 +8,28 @@
 import UIKit
 
 class CreateEntryViewController: UIViewController {
-
+    
+    // MARK: - Properties
+    
+    var newJournalEntry = Journal()
+    // true = good day
+    // false = bad day
+    var dayStatus = true
+    
+    // MARK: - Actions
+    @IBAction func goodDayButton(_ sender: UIButton) {
+        sender.imageView?.image = UIImage(named: "face.smiling.inverse")
+    }
+    @IBAction func badDayButton(_ sender: UIButton) {
+        if dayStatus == true {
+            sender.imageView?.image = UIImage(named: "face.smiling.inverse")
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+
 
         // Do any additional setup after loading the view.
     }
