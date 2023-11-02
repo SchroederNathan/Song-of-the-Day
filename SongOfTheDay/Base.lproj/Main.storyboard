@@ -376,13 +376,27 @@
                                                                                         <action selector="playSong:" destination="Ltg-Tf-ixe" eventType="touchUpInside" id="0rM-zu-TG8"/>
                                                                                     </connections>
                                                                                 </button>
-                                                                                <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.69999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="Gbe-07-cop">
+                                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="74y-KX-QoF">
                                                                                     <rect key="frame" x="45" y="0.0" width="155" height="30"/>
-                                                                                </progressView>
+                                                                                    <subviews>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kJ1-fb-bTL">
+                                                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="6"/>
+                                                                                        </view>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rUD-S3-nUD">
+                                                                                            <rect key="frame" x="0.0" y="6" width="155" height="6"/>
+                                                                                        </view>
+                                                                                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gbe-07-cop">
+                                                                                            <rect key="frame" x="0.0" y="12" width="155" height="6"/>
+                                                                                        </progressView>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1B-pe-2a7">
+                                                                                            <rect key="frame" x="0.0" y="18" width="155" height="6"/>
+                                                                                        </view>
+                                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLV-SY-eDc">
+                                                                                            <rect key="frame" x="0.0" y="24" width="155" height="6"/>
+                                                                                        </view>
+                                                                                    </subviews>
+                                                                                </stackView>
                                                                             </subviews>
-                                                                            <constraints>
-                                                                                <constraint firstItem="Gbe-07-cop" firstAttribute="leading" secondItem="uoG-OV-Q1E" secondAttribute="leading" constant="45" id="bDe-mf-jgn"/>
-                                                                            </constraints>
                                                                         </stackView>
                                                                     </subviews>
                                                                     <constraints>

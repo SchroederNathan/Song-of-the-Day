@@ -8,7 +8,7 @@
 import UIKit
 
 protocol CustomCellDelegate: AnyObject {
-    func playCellSong(forUrl urlString: String)
+    func playCellSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton)
 }
 
 class SongSelectTableViewCell: UITableViewCell {
@@ -16,6 +16,9 @@ class SongSelectTableViewCell: UITableViewCell {
     // MARK: - Properties
     var delegate: CustomCellDelegate?
     var playbackUrlString: String!
+    var currentProgressView: UIProgressView!
+    
+    var playing = false
     
     // MARK: - Outlets
     @IBOutlet var songArtwork: UIImageView!
@@ -27,7 +30,7 @@ class SongSelectTableViewCell: UITableViewCell {
     
     //Audio
     @IBAction func playSong(_ sender: UIButton) {
-        delegate?.playCellSong(forUrl: playbackUrlString)
+        delegate?.playCellSong(forUrl: playbackUrlString, progressView: progressView, button: sender)
     }
     
 

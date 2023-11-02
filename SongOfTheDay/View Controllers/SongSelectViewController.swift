@@ -21,24 +21,28 @@ class SongSelectViewController: UIViewController {
     var audioPlayer: AVPlayer!
     var playerItem: AVPlayerItem!
     var isPlaying = false
+    var audioButton = UIButton()
     
     var songUrl = ""
 
     @IBOutlet var tableView: UITableView!
     
     // MARK: - Audio Player methods
-    func loadAudioPlayer(with urlString: String) {
-        //Play audio
-        guard let url = URL(string: urlString) else { return }
-        playerItem = AVPlayerItem(url: url)
-        audioPlayer = AVPlayer(playerItem: playerItem)
-    }
-    
-    func togglePlayer() {
-        if isPlaying {
-            isPlaying.toggle()
-        }
-    }
+//    func loadAudioPlayer(with urlString: String) {
+//        //Play audio
+//        guard let url = URL(string: urlString) else { return }
+//        playerItem = AVPlayerItem(url: url)
+//        audioPlayer = AVPlayer(playerItem: playerItem)
+//    }
+//    
+//    func togglePlayer() {
+//        if isPlaying {
+//            isPlaying.toggle()
+//            
+//        } else {
+//            isPlaying.toggle()
+//        }
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -66,6 +70,7 @@ class SongSelectViewController: UIViewController {
             
             cell.delegate = self
             cell.playbackUrlString = song.previewUrl
+            cell.progressView = cell.progressView
             
             return cell
         }
@@ -155,6 +160,10 @@ class SongSelectViewController: UIViewController {
         dataTask.resume()
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        audioPlayer.pause()
+    }
+    
     // Display alert for error messages
     func errorMessage(error: String, context: String) {
         
@@ -179,11 +188,48 @@ extension SongSelectViewController: UISearchBarDelegate {
 
 // MARK: Audio delegate
 extension SongSelectViewController: CustomCellDelegate {
-    func playCellSong(forUrl urlString: String) {
+    func playCellSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton) {
         guard let url = URL(string: urlString) else { return }
         playerItem = AVPlayerItem(url: url)
         audioPlayer = AVPlayer(playerItem: playerItem)
         audioPlayer.play()
+        
+        // Change image
+        button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        audioButton = button
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+        
+        let interval = CMTimeMake(value: 1, timescale: 10)
+        
+        audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { _ in
+            if self.audioPlayer.status == .readyToPlay {
+                // run the update to the progress
+                self.updateProgress(for: self.playerItem, progressView: progressView)
+            }
+        }
+        
+        
+//        if isPlaying == false {
+//            button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+//            isPlaying = true
+//        } else {
+//            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+//            isPlaying = false
+//        }
+    }
+    
+    func updateProgress(for item: AVPlayerItem, progressView: UIProgressView) {
+        let duration = CMTimeGetSeconds(item.duration)
+        let currentTime = CMTimeGetSeconds(item.currentTime())
+        
+        progressView.progress = Float(currentTime/duration)
+        
+    }
+    
+    @objc func finishedPlaying() {
+        print("it triggered at least")
+        audioButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
 }
 
