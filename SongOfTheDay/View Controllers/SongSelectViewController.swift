@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVKit
 
 class SongSelectViewController: UIViewController {
     
@@ -15,15 +16,35 @@ class SongSelectViewController: UIViewController {
     var songs = [TempSong]()
     private lazy var tableDataSource = createDataSource()
     let cellIdentifier = "songCell"
+    
+    // Audio properties
+    var audioPlayer: AVPlayer!
+    var playerItem: AVPlayerItem!
+    var isPlaying = false
+    
+    var songUrl = ""
 
     @IBOutlet var tableView: UITableView!
     
+    // MARK: - Audio Player methods
+    func loadAudioPlayer(with urlString: String) {
+        //Play audio
+        guard let url = URL(string: urlString) else { return }
+        playerItem = AVPlayerItem(url: url)
+        audioPlayer = AVPlayer(playerItem: playerItem)
+    }
     
+    func togglePlayer() {
+        if isPlaying {
+            isPlaying.toggle()
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+    
     
     // MARK: - Data Source Properties
     
@@ -31,14 +52,21 @@ class SongSelectViewController: UIViewController {
         let dataSource = DataSource(tableView: tableView) { tableView, indexPath, song in
             let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! SongSelectTableViewCell
             
+            // Give image and background view corner radius's
             cell.backView.layer.cornerRadius = 7.5
             cell.songArtwork.layer.cornerRadius = 7.5
             
+            // Set text
             cell.songNameLabel.text = song.trackName
             cell.artistNameLabel.text = song.artistName
             cell.albumNameLabel.text = song.collectionName
+            
             // Set text and image for each cell
             self.fetchImage(for: song.artworkUrl100, for: cell)
+            
+            cell.delegate = self
+            cell.playbackUrlString = song.previewUrl
+            
             return cell
         }
         
@@ -126,10 +154,6 @@ class SongSelectViewController: UIViewController {
         }
         dataTask.resume()
     }
-
-    
-    
-
     
     // Display alert for error messages
     func errorMessage(error: String, context: String) {
@@ -152,3 +176,15 @@ extension SongSelectViewController: UISearchBarDelegate {
         print(safeText)
     }
 }
+
+// MARK: Audio delegate
+extension SongSelectViewController: CustomCellDelegate {
+    func playCellSong(forUrl urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        playerItem = AVPlayerItem(url: url)
+        audioPlayer = AVPlayer(playerItem: playerItem)
+        audioPlayer.play()
+    }
+}
+
+

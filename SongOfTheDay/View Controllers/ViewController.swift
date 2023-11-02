@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import AVKit
 
 class ViewController: UIViewController {
     
@@ -29,7 +30,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after load
-        //fetchTempEntrys()
         
         // Make title large
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -50,6 +50,7 @@ class ViewController: UIViewController {
             self.fetchImage(for: entry.song!.artworkUrl100 ?? "", for: cell!)
             cell?.songInfo.text = "\(entry.song?.artistName ?? "error") • \(entry.song?.artistName ?? "error")"
             cell?.journalDate.text = entry.date?.description
+            
             
             // Give each cell a corner radius
             cell?.layer.cornerRadius = 15

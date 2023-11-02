@@ -7,7 +7,15 @@
 
 import UIKit
 
+protocol CustomCellDelegate: AnyObject {
+    func playCellSong(forUrl urlString: String)
+}
+
 class SongSelectTableViewCell: UITableViewCell {
+    
+    // MARK: - Properties
+    var delegate: CustomCellDelegate?
+    var playbackUrlString: String!
     
     // MARK: - Outlets
     @IBOutlet var songArtwork: UIImageView!
@@ -16,6 +24,11 @@ class SongSelectTableViewCell: UITableViewCell {
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var backView: UIView!
+    
+    //Audio
+    @IBAction func playSong(_ sender: UIButton) {
+        delegate?.playCellSong(forUrl: playbackUrlString)
+    }
     
 
     override func awakeFromNib() {
