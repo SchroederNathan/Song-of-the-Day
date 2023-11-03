@@ -9,6 +9,7 @@ import UIKit
 
 protocol CustomCellDelegate: AnyObject {
     func playCellSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton)
+    func passSongData(data: TempSong)
 }
 
 class SongSelectTableViewCell: UITableViewCell {
@@ -17,6 +18,7 @@ class SongSelectTableViewCell: UITableViewCell {
     var delegate: CustomCellDelegate?
     var playbackUrlString: String!
     var currentProgressView: UIProgressView!
+    var currentSong: TempSong!
     
     var playing = false
     
@@ -27,6 +29,11 @@ class SongSelectTableViewCell: UITableViewCell {
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var progressView: UIProgressView!
     @IBOutlet var backView: UIView!
+    
+    // Pass the data
+    @IBAction func selectButton(_ sender: UIButton) {
+        delegate?.passSongData(data: currentSong)
+    }
     
     //Audio
     @IBAction func playSong(_ sender: UIButton) {

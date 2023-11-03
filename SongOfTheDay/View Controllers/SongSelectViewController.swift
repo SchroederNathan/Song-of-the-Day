@@ -10,6 +10,9 @@ import AVKit
 
 class SongSelectViewController: UIViewController {
     
+    weak var delegate : SongSelectViewControllerDelegate?
+
+    
     typealias DataSource = UITableViewDiffableDataSource<Section, TempSong>
 
     // MARK: - properties
@@ -52,8 +55,13 @@ class SongSelectViewController: UIViewController {
             self.fetchImage(for: song.artworkUrl100, for: cell)
             
             cell.delegate = self
+            
+            // Song playback and progress
             cell.playbackUrlString = song.previewUrl
             cell.progressView = cell.progressView
+            
+            // Song to pass back to previous controller
+            cell.currentSong = song
             
             return cell
         }
@@ -160,6 +168,8 @@ class SongSelectViewController: UIViewController {
 
 }
 
+
+
 extension SongSelectViewController: UISearchBarDelegate {
     
     // Function used when the user taps search or the enter button on the keyboard
@@ -180,10 +190,9 @@ extension SongSelectViewController: CustomCellDelegate {
         guard let url = URL(string: urlString) else { return }
         playerItem = AVPlayerItem(url: url)
         audioPlayer = AVPlayer(playerItem: playerItem)
-        audioPlayer.play()
         
-        // Change image
-        button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        //Toggles audio player to play and stop as well as change the images
+        togglePlayer(button: button, progressView: progressView)
         
         
         audioButton = button
@@ -220,6 +229,44 @@ extension SongSelectViewController: CustomCellDelegate {
     @objc func finishedPlaying() {
         audioButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
+    
+    func togglePlayer(button: UIButton, progressView: UIProgressView) {
+        if isPlaying {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            progressView.progress = 0.0
+            audioPlayer.pause()
+        } else {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+            audioPlayer.play()
+        }
+    }
+    
+    // MARK: - Pass song data
+    func passSongData(data: TempSong) {
+        
+        // Pass data to previous controller
+        if let delegate = delegate{
+            delegate.doSomethingWith(data: data)
+        }
+        
+        print("Worked!")
+        
+        // Dismiss view controller
+        navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
 }
+// MARK: - Protocol
+
+protocol SongSelectViewControllerDelegate : NSObjectProtocol{
+    func doSomethingWith(data: TempSong)
+}
+
 
 

@@ -6,16 +6,43 @@
 //
 
 import UIKit
+import AVKit
 
-class CreateEntryViewController: UIViewController {
-    
+class CreateEntryViewController: UIViewController, SongSelectViewControllerDelegate {
+
     // MARK: - Properties
-    
     var newJournalEntry = Journal()
+    
+    var currentSong: TempSong!
+    
+    // Audio properties
+    var audioPlayer = AVPlayer()
+    var playerItem: AVPlayerItem!
+    var isPlaying = false
+    var audioButton = UIButton()
+    
     
     // true = good day
     // false = bad day
     var dayStatus = true
+    
+    // MARK: - Outlets
+    @IBOutlet var songNameLabel: UILabel!
+    @IBOutlet var artistNameLabel: UILabel!
+    @IBOutlet var albumNameLabel: UILabel!
+    @IBOutlet var albumImageView: UIImageView!
+    @IBOutlet var songBackground: UIView!
+    
+    // Audio action and outlet
+    @IBAction func playAudioButton(_ sender: UIButton) {
+        if currentSong != nil {
+            playSong(forUrl: currentSong.previewUrl, progressView: progressView, button: sender)
+        }
+
+    }
+    
+    @IBOutlet var progressView: UIProgressView!
+    
     
     // MARK: - Actions
     @IBAction func goodDayButton(_ sender: UIButton) {
@@ -30,18 +57,116 @@ class CreateEntryViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        songBackground.layer.cornerRadius = 7.5
+        albumImageView.layer.cornerRadius = 7.5
 
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func doSomethingWith(data: TempSong) {
+        
+        // Setup the UI according to the selected song
+        songNameLabel.text = data.trackName
+        artistNameLabel.text = data.artistName
+        albumNameLabel.text = data.collectionName
+        fetchImage(for: data.artworkUrl100, imageView: albumImageView)
+        
+        currentSong = data
+        
+//        self.newJournalEntry.song?.artistName = data.artistName
+//        self.newJournalEntry.song?.trackName = data.trackName
+//        self.newJournalEntry.song?.collectionName = data.collectionName
+//        self.newJournalEntry.song?.artworkUrl100 = data.artworkUrl100
+//        self.newJournalEntry.song?.previewUrl = data.previewUrl
+        
+        
+        
+        print(data)
     }
-    */
+    
+    // MARK: - Fetch image
+    func fetchImage(for path: String, imageView: UIImageView) {
+        
+        guard let imagePath = URL(string: path) else { return }
+        
+        let imageFetchTask = URLSession.shared.downloadTask(with: imagePath) {
+            url, response, error in
+            if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
+                DispatchQueue.main.async {
+                    // Set the imageView to the selected song
+                    imageView.image = image
+                }
+            }
+        }
+            
+        imageFetchTask.resume()
+    }
+    
+    // MARK: - Audio methods
+    func playSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton) {
+        guard let url = URL(string: urlString) else { return }
+        playerItem = AVPlayerItem(url: url)
+        audioPlayer = AVPlayer(playerItem: playerItem)
+        
+        togglePlayer(button: button)
+        
+        audioButton = button
+        
+        // Triggers when preview song is done playing
+        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+        
+        let interval = CMTimeMake(value: 1, timescale: 10)
+        
+        // Updates progressView
+        audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { _ in
+            if self.audioPlayer.status == .readyToPlay {
+                // run the update to the progress
+                self.updateProgress(for: self.playerItem, progressView: progressView)
+            }
+        }
+        
+    }
+    
+    // Calculates and displays progress of songs on the progressView in tableview cells
+    func updateProgress(for item: AVPlayerItem, progressView: UIProgressView) {
+        let duration = CMTimeGetSeconds(item.duration)
+        let currentTime = CMTimeGetSeconds(item.currentTime())
+        
+        progressView.progress = Float(currentTime/duration)
+        
+        if progressView.progress >= 1.0 {
+            progressView.progress = 0.0
+        }
+        
+    }
+    
+    // Reset to play button image when preview song is done playing
+    @objc func finishedPlaying() {
+        audioButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+    }
+    
+    func togglePlayer(button: UIButton) {
+        if isPlaying {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            progressView.progress = 0.0
+            audioPlayer.pause()
+        } else {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+            audioPlayer.play()
+        }
+    }
+    
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let displayVC = segue.destination as! SongSelectViewController
+        displayVC.delegate = self
+    }
 
 }
+
+

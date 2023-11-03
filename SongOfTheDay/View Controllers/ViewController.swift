@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     //MARK: - Outlets
     @IBOutlet var collectionView: UICollectionView!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
