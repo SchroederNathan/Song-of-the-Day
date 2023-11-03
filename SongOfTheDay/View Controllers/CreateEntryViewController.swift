@@ -11,9 +11,13 @@ import AVKit
 class CreateEntryViewController: UIViewController, SongSelectViewControllerDelegate {
 
     // MARK: - Properties
+    
+    // Entry properties
     var newJournalEntry = Journal()
     
     var currentSong: TempSong!
+    var currentMood: Bool!
+    var message: String!
     
     // Audio properties
     var audioPlayer = AVPlayer()
@@ -21,17 +25,17 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     var isPlaying = false
     var audioButton = UIButton()
     
-    
-    // true = good day
-    // false = bad day
-    var dayStatus = true
-    
     // MARK: - Outlets
     @IBOutlet var songNameLabel: UILabel!
     @IBOutlet var artistNameLabel: UILabel!
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var albumImageView: UIImageView!
     @IBOutlet var songBackground: UIView!
+    
+    @IBOutlet var goodDayButtonImage: UIButton!
+    @IBOutlet var badDayButtonImage: UIButton!
+    
+    
     
     // Audio action and outlet
     @IBAction func playAudioButton(_ sender: UIButton) {
@@ -46,11 +50,25 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     
     // MARK: - Actions
     @IBAction func goodDayButton(_ sender: UIButton) {
-        sender.imageView?.image = UIImage(named: "face.smiling.inverse")
+        moodToggle(mood: true)
+        print(currentMood!)
     }
     @IBAction func badDayButton(_ sender: UIButton) {
-        if dayStatus == true {
-            sender.imageView?.image = UIImage(named: "face.smiling.inverse")
+        moodToggle(mood: false)
+        print(currentMood!)
+    }
+    
+    func moodToggle(mood: Bool) {
+        if mood {
+            goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
+            badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+            currentMood = true
+            
+        } else {
+            goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown.fill"), for: .normal)
+            currentMood = false
+
         }
     }
     
@@ -72,14 +90,6 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         fetchImage(for: data.artworkUrl100, imageView: albumImageView)
         
         currentSong = data
-        
-//        self.newJournalEntry.song?.artistName = data.artistName
-//        self.newJournalEntry.song?.trackName = data.trackName
-//        self.newJournalEntry.song?.collectionName = data.collectionName
-//        self.newJournalEntry.song?.artworkUrl100 = data.artworkUrl100
-//        self.newJournalEntry.song?.previewUrl = data.previewUrl
-        
-        
         
         print(data)
     }
