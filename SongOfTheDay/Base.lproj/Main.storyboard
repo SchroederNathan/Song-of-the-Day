@@ -149,11 +149,11 @@
             <objects>
                 <viewController title="Create Entry" id="jY0-ra-zyO" customClass="CreateEntryViewController" customModule="SongOfTheDay" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Iy-cE-UK9">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aKy-02-Sci">
-                                <rect key="frame" x="20" y="103.00000000000003" width="353" height="467.66666666666674"/>
+                                <rect key="frame" x="20" y="0.0" width="353" height="467.66666666666663"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Choose a song" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UhK-WR-Vin">
                                         <rect key="frame" x="0.0" y="0.0" width="142" height="26.333333333333332"/>
@@ -196,13 +196,13 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qYf-NW-kP7">
-                                        <rect key="frame" x="0.0" y="171.33333333333331" width="255.66666666666666" height="26.333333333333343"/>
+                                        <rect key="frame" x="0.0" y="171.33333333333334" width="255.66666666666666" height="26.333333333333343"/>
                                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zTB-2z-6Hf">
-                                        <rect key="frame" x="0.0" y="207.66666666666669" width="100" height="50"/>
+                                        <rect key="frame" x="0.0" y="207.66666666666666" width="100" height="49.999999999999972"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49T-az-Xth">
                                                 <rect key="frame" x="0.0" y="0.0" width="49.666666666666664" height="50"/>
@@ -268,7 +268,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="f0w-BF-nQo">
+                            <searchBar contentMode="redraw" placeholder=" Search for a song..." translatesAutoresizingMaskIntoConstraints="NO" id="f0w-BF-nQo">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -409,6 +409,9 @@
                                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.fill" catalog="system"/>
+                                                                    <connections>
+                                                                        <segue destination="jY0-ra-zyO" kind="show" id="dwg-54-fjE"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                         </stackView>
@@ -520,6 +523,9 @@
             <point key="canvasLocation" x="925.95419847328242" y="379.57746478873241"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="dwg-54-fjE"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>

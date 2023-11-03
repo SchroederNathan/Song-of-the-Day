@@ -29,12 +29,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after load
         
         // Make title large
         navigationController?.navigationBar.prefersLargeTitles = true
-
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -50,7 +47,6 @@ class ViewController: UIViewController {
             self.fetchImage(for: entry.song!.artworkUrl100 ?? "", for: cell!)
             cell?.songInfo.text = "\(entry.song?.artistName ?? "error") • \(entry.song?.artistName ?? "error")"
             cell?.journalDate.text = entry.date?.description
-            
             
             // Give each cell a corner radius
             cell?.layer.cornerRadius = 15
@@ -85,11 +81,6 @@ class ViewController: UIViewController {
             print("Error - could not fetch: \(error.localizedDescription)")
         }
     }
-    
-//    func fetchTempEntrys() {
-//        fetchSongInfo(query: "Prince")
-//        
-//    }
     
     // MARK: - Fetch Images
     func fetchImage(for path: String, for cell: JournalEntryCollectionViewCell) {

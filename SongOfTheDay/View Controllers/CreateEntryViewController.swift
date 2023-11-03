@@ -12,6 +12,7 @@ class CreateEntryViewController: UIViewController {
     // MARK: - Properties
     
     var newJournalEntry = Journal()
+    
     // true = good day
     // false = bad day
     var dayStatus = true
@@ -30,8 +31,6 @@ class CreateEntryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
-        // Do any additional setup after loading the view.
     }
     
 

@@ -18,7 +18,7 @@ class SongSelectViewController: UIViewController {
     let cellIdentifier = "songCell"
     
     // Audio properties
-    var audioPlayer: AVPlayer!
+    var audioPlayer = AVPlayer()
     var playerItem: AVPlayerItem!
     var isPlaying = false
     var audioButton = UIButton()
@@ -27,26 +27,9 @@ class SongSelectViewController: UIViewController {
 
     @IBOutlet var tableView: UITableView!
     
-    // MARK: - Audio Player methods
-//    func loadAudioPlayer(with urlString: String) {
-//        //Play audio
-//        guard let url = URL(string: urlString) else { return }
-//        playerItem = AVPlayerItem(url: url)
-//        audioPlayer = AVPlayer(playerItem: playerItem)
-//    }
-//    
-//    func togglePlayer() {
-//        if isPlaying {
-//            isPlaying.toggle()
-//            
-//        } else {
-//            isPlaying.toggle()
-//        }
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
     }
     
     
@@ -107,9 +90,11 @@ class SongSelectViewController: UIViewController {
     
     func fetchSongInfo(query: String) {
         
+        // Create a url including the users searched term
         var apiUrl = "https://itunes.apple.com/search?term="
         apiUrl = apiUrl.appending(query)
         apiUrl = apiUrl.appending("&entity=song")
+        
         // turn string into valid URL
         guard let url = URL(string: apiUrl) else {return}
         print(url)
@@ -131,6 +116,7 @@ class SongSelectViewController: UIViewController {
                     let decoder = JSONDecoder()
                     let results = try decoder.decode(TempSongs.self, from: data)
                     
+                    // Put all searched songs into the songs array
                     self.songs = results.results
                     
                 } catch DecodingError.valueNotFound(let error, let message) {
@@ -161,12 +147,12 @@ class SongSelectViewController: UIViewController {
     }
     
     override func viewDidDisappear(_ animated: Bool) {
+        // Pauses the audio once song is either selected or view is closed
         audioPlayer.pause()
     }
     
     // Display alert for error messages
     func errorMessage(error: String, context: String) {
-        
         let alert = UIAlertController(title: error, message: context, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
@@ -188,6 +174,8 @@ extension SongSelectViewController: UISearchBarDelegate {
 
 // MARK: Audio delegate
 extension SongSelectViewController: CustomCellDelegate {
+    
+    // MARK: - Audio methods
     func playCellSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton) {
         guard let url = URL(string: urlString) else { return }
         playerItem = AVPlayerItem(url: url)
@@ -196,12 +184,16 @@ extension SongSelectViewController: CustomCellDelegate {
         
         // Change image
         button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
+        
+        
         audioButton = button
         
+        // Triggers when preview song is done playing
         NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
         
         let interval = CMTimeMake(value: 1, timescale: 10)
         
+        // Updates progressView
         audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { _ in
             if self.audioPlayer.status == .readyToPlay {
                 // run the update to the progress
@@ -209,26 +201,23 @@ extension SongSelectViewController: CustomCellDelegate {
             }
         }
         
-        
-//        if isPlaying == false {
-//            button.setImage(UIImage(systemName: "pause.circle.fill"), for: .normal)
-//            isPlaying = true
-//        } else {
-//            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
-//            isPlaying = false
-//        }
     }
     
+    // Calculates and displays progress of songs on the progressView in tableview cells
     func updateProgress(for item: AVPlayerItem, progressView: UIProgressView) {
         let duration = CMTimeGetSeconds(item.duration)
         let currentTime = CMTimeGetSeconds(item.currentTime())
         
         progressView.progress = Float(currentTime/duration)
         
+        if progressView.progress >= 1.0 {
+            progressView.progress = 0.0
+        }
+        
     }
     
+    // Reset to play button image when preview song is done playing
     @objc func finishedPlaying() {
-        print("it triggered at least")
         audioButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
     }
 }
