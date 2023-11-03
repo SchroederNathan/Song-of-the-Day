@@ -31,6 +31,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var albumNameLabel: UILabel!
     @IBOutlet var albumImageView: UIImageView!
     @IBOutlet var songBackground: UIView!
+    @IBOutlet var messageBackground: UIView!
     
     @IBOutlet var goodDayButtonImage: UIButton!
     @IBOutlet var badDayButtonImage: UIButton!
@@ -76,6 +77,9 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        messageBackground.layer.cornerRadius = 7.5
         songBackground.layer.cornerRadius = 7.5
         albumImageView.layer.cornerRadius = 7.5
 
