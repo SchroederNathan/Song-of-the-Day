@@ -3,6 +3,8 @@
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -19,7 +21,7 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oXY-SV-tOu">
                                 <rect key="frame" x="0.0" y="103" width="393" height="666"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Itf-kX-31r">
                                     <size key="itemSize" width="175" height="275"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -56,12 +58,14 @@
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-XF-2DT">
                                                                     <rect key="frame" x="0.0" y="0.99999999999999822" width="30" height="28.666666666666664"/>
+                                                                    <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="ijf-l0-Rk7"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="izq-6H-On9">
                                                                     <rect key="frame" x="30" y="0.99999999999999822" width="30" height="28.666666666666664"/>
+                                                                    <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="0Os-dF-YK2"/>
                                                                     </constraints>
@@ -74,6 +78,7 @@
                                                                 </label>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fC-mgy">
                                                                     <rect key="frame" x="135" y="3" width="20" height="24.333333333333332"/>
+                                                                    <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="20" id="gRH-nP-o2a"/>
                                                                     </constraints>
@@ -103,6 +108,7 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="tintColor" name="AccentColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="uwc-0U-pwX" secondAttribute="bottom" constant="10" id="4i8-sB-uvs"/>
                                                 <constraint firstItem="uwc-0U-pwX" firstAttribute="leading" secondItem="Yll-gf-ZiM" secondAttribute="leading" constant="10" id="Lvv-tL-KzI"/>
@@ -110,7 +116,7 @@
                                                 <constraint firstItem="uwc-0U-pwX" firstAttribute="top" secondItem="Yll-gf-ZiM" secondAttribute="top" constant="10" id="sRC-eS-HPS"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" name="CardColors"/>
                                         <size key="customSize" width="175" height="275"/>
                                         <connections>
                                             <outlet property="badDayButton" destination="izq-6H-On9" id="ci2-K9-YWz"/>
@@ -124,7 +130,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oXY-SV-tOu" secondAttribute="bottom" id="0qY-CP-dU6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oXY-SV-tOu" secondAttribute="trailing" id="QTN-mK-YKZ"/>
@@ -133,7 +139,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Journal Entries" id="wg5-cG-MwS">
-                        <barButtonItem key="rightBarButtonItem" title="Edit" image="pencil" catalog="system" id="5h6-hX-gKq"/>
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="5h6-hX-gKq">
+                            <imageReference key="image" image="pencil" catalog="system"/>
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="oXY-SV-tOu" id="Sbl-is-GRD"/>
@@ -168,7 +177,7 @@
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.app.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vZg-3v-rHd">
                                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="90" height="87"/>
-                                                        <color key="tintColor" systemColor="systemBackgroundColor"/>
+                                                        <color key="tintColor" name="AccentColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="90" id="WN8-UI-ZQK"/>
                                                             <constraint firstAttribute="width" constant="90" id="YWo-cq-6lg"/>
@@ -183,7 +192,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zg2-3y-xDT">
                                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="textColor" name="SecondaryTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jir-Gm-yNY">
@@ -204,7 +213,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A97-MT-f8N">
                                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="textColor" name="SecondaryTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Hq-Dp-gpe">
@@ -225,7 +234,7 @@
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lk5-rI-PU4">
                                                                         <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <color key="textColor" name="SecondaryTextColor"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZo-in-VKd">
@@ -245,6 +254,7 @@
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jDA-Ql-Usa">
                                                                         <rect key="frame" x="0.0" y="0.0" width="43" height="30"/>
+                                                                        <color key="tintColor" name="AccentColor"/>
                                                                         <state key="normal" title="Button"/>
                                                                         <buttonConfiguration key="configuration" style="plain" image="play.circle.fill" catalog="system"/>
                                                                         <connections>
@@ -262,6 +272,7 @@
                                                                             </view>
                                                                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7Ho-u2-tFC">
                                                                                 <rect key="frame" x="0.0" y="12" width="140" height="6"/>
+                                                                                <color key="tintColor" name="AccentColor"/>
                                                                             </progressView>
                                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3yE-Q6-JcP">
                                                                                 <rect key="frame" x="0.0" y="18" width="140" height="6"/>
@@ -280,7 +291,7 @@
                                                     </stackView>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kf5-RA-mmV">
                                                         <rect key="frame" x="293" y="0.0" width="40" height="90"/>
-                                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="tintColor" name="AccentColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.fill" catalog="system"/>
                                                         <connections>
@@ -290,7 +301,7 @@
                                                 </subviews>
                                             </stackView>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <color key="backgroundColor" name="CardColors"/>
                                         <constraints>
                                             <constraint firstItem="dkn-9n-7ZV" firstAttribute="leading" secondItem="Gp0-Px-jbF" secondAttribute="leading" constant="10" id="4GA-rp-td6"/>
                                             <constraint firstAttribute="trailing" secondItem="hYB-U2-8bS" secondAttribute="trailing" constant="60" id="H0S-PP-a0E"/>
@@ -310,6 +321,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="49T-az-Xth">
                                                 <rect key="frame" x="0.0" y="0.0" width="51.666666666666664" height="70"/>
+                                                <color key="tintColor" name="AccentColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="hand.thumbsup" catalog="system">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
@@ -320,6 +332,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ph6-Sk-GG1">
                                                 <rect key="frame" x="68.666666666666671" y="0.0" width="51.333333333333329" height="70"/>
+                                                <color key="tintColor" name="AccentColor"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="plain" image="hand.thumbsdown" catalog="system" imagePadding="0.0">
                                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
@@ -346,7 +359,7 @@
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="leading" contentVerticalAlignment="top" placeholder="Write message here..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9U6-7K-evW">
                                                 <rect key="frame" x="10" y="10" width="333" height="200"/>
-                                                <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                <color key="backgroundColor" name="CardColors"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="200" id="nD1-Nj-wAZ"/>
                                                 </constraints>
@@ -354,7 +367,7 @@
                                                 <textInputTraits key="textInputTraits" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
                                             </textField>
                                         </subviews>
-                                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                        <color key="backgroundColor" name="CardColors"/>
                                         <constraints>
                                             <constraint firstItem="9U6-7K-evW" firstAttribute="leading" secondItem="y4v-bW-8Ar" secondAttribute="leading" constant="10" id="5XB-Ml-quW"/>
                                             <constraint firstAttribute="trailing" secondItem="9U6-7K-evW" secondAttribute="trailing" constant="10" id="axC-no-UvS"/>
@@ -372,7 +385,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yj8-nX-kEe"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstItem="aKy-02-Sci" firstAttribute="top" secondItem="yj8-nX-kEe" secondAttribute="top" id="UvE-s2-OFc"/>
                             <constraint firstItem="aKy-02-Sci" firstAttribute="leading" secondItem="yj8-nX-kEe" secondAttribute="leading" constant="20" id="cZ3-Ij-97r"/>
@@ -380,7 +393,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Create Entry" id="6IC-gs-tLw">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qFo-Cq-7hW"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qFo-Cq-7hW">
+                            <color key="tintColor" name="AccentColor"/>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="albumImageView" destination="vZg-3v-rHd" id="MKi-Ce-TzM"/>
@@ -408,6 +423,8 @@
                         <subviews>
                             <searchBar contentMode="redraw" placeholder=" Search for a song..." translatesAutoresizingMaskIntoConstraints="NO" id="f0w-BF-nQo">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="56"/>
+                                <color key="tintColor" name="AccentColor"/>
+                                <color key="barTintColor" name="Background"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="eMD-fN-xNs" id="4RN-fe-G0A"/>
@@ -415,7 +432,7 @@
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Bcu-hm-GVJ">
                                 <rect key="frame" x="0.0" y="56" width="393" height="786"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" rowHeight="130" id="Ltg-Tf-ixe" customClass="SongSelectTableViewCell" customModule="SongOfTheDay" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="130"/>
@@ -446,7 +463,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HCC-9Y-vpL">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="textColor" name="SecondaryTextColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Song Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ATa-iz-L8s">
@@ -467,7 +484,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jsH-QE-BdM">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="textColor" name="SecondaryTextColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-MH-ZWg">
@@ -488,7 +505,7 @@
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SbZ-X0-DbZ">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="20"/>
                                                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                                    <color key="textColor" name="SecondaryTextColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Album Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GC0-BN-BH2">
@@ -508,6 +525,7 @@
                                                                             <subviews>
                                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SYb-Ah-6xl">
                                                                                     <rect key="frame" x="0.0" y="0.0" width="45" height="30"/>
+                                                                                    <color key="tintColor" name="AccentColor"/>
                                                                                     <state key="normal" title="Button"/>
                                                                                     <buttonConfiguration key="configuration" style="plain" image="play.circle.fill" catalog="system"/>
                                                                                     <connections>
@@ -525,6 +543,7 @@
                                                                                         </view>
                                                                                         <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Gbe-07-cop">
                                                                                             <rect key="frame" x="0.0" y="12" width="155" height="6"/>
+                                                                                            <color key="tintColor" name="AccentColor"/>
                                                                                         </progressView>
                                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v1B-pe-2a7">
                                                                                             <rect key="frame" x="0.0" y="18" width="155" height="6"/>
@@ -544,7 +563,7 @@
                                                                 </stackView>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M8O-eb-OFH">
                                                                     <rect key="frame" x="310" y="0.0" width="43" height="90"/>
-                                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <color key="tintColor" name="AccentColor"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.fill" catalog="system"/>
                                                                     <connections>
@@ -554,7 +573,7 @@
                                                             </subviews>
                                                         </stackView>
                                                     </subviews>
-                                                    <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                                                    <color key="backgroundColor" name="CardColors"/>
                                                     <constraints>
                                                         <constraint firstItem="Lr0-um-bd4" firstAttribute="leading" secondItem="Uje-m5-aUr" secondAttribute="leading" constant="10" id="5hZ-78-dID"/>
                                                         <constraint firstAttribute="trailing" secondItem="Lr0-um-bd4" secondAttribute="trailing" constant="10" id="J9d-a3-axl"/>
@@ -563,6 +582,7 @@
                                                     </constraints>
                                                 </view>
                                             </subviews>
+                                            <color key="backgroundColor" name="Background"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="Uje-m5-aUr" secondAttribute="bottom" constant="10" id="O5b-77-69g"/>
                                                 <constraint firstAttribute="trailing" secondItem="Uje-m5-aUr" secondAttribute="trailing" constant="10" id="pnd-CU-54p"/>
@@ -612,6 +632,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" name="Accent"/>
                     </tabBar>
                     <connections>
                         <segue destination="4r6-6j-dj9" kind="relationship" relationship="viewControllers" id="gxA-tr-NfJ"/>
@@ -626,7 +647,15 @@
         <scene sceneID="Zp7-d4-IEn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4r6-6j-dj9" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Entries" image="book.pages.fill" catalog="system" id="4Aa-7n-aVX"/>
+                    <tabBarItem key="tabBarItem" title="Entries" id="4Aa-7n-aVX">
+                        <imageReference key="image" image="book.pages.fill" catalog="system" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color name="AccentColor"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RZ1-fF-8Oe">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -645,7 +674,16 @@
         <scene sceneID="Knu-Th-tQO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pD1-Iy-Wtw" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Create" image="plus.square.fill.on.square.fill" catalog="system" id="iA8-zA-7tV"/>
+                    <tabBarItem key="tabBarItem" title="Create" id="iA8-zA-7tV">
+                        <imageReference key="image" image="plus.square.fill.on.square.fill" catalog="system" renderingMode="hierarchical-single">
+                            <hierarchicalColors>
+                                <color name="Accent"/>
+                                <color systemColor="secondaryLabelColor"/>
+                                <color systemColor="tertiaryLabelColor"/>
+                            </hierarchicalColors>
+                        </imageReference>
+                        <color key="badgeColor" name="AccentColor"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="vzP-3Z-BVH">
                         <rect key="frame" x="0.0" y="59" width="393" height="44"/>
@@ -672,11 +710,29 @@
         <image name="play.circle.fill" catalog="system" width="128" height="123"/>
         <image name="plus.square.fill.on.square.fill" catalog="system" width="128" height="120"/>
         <image name="questionmark.app.fill" catalog="system" width="128" height="114"/>
-        <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="Accent">
+            <color red="0.77647058823529413" green="0.6470588235294118" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="AccentColor">
+            <color red="0.77647058823529413" green="0.6470588235294118" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Background">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="CardColors">
+            <color red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryTextColor">
+            <color red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.29803921570000003" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -81,6 +81,7 @@
 			children = (
 				439B930A2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift */,
 				430EFFE92AF2FCEC00C40EBA /* SongSelectTableViewCell.swift */,
+				439B930F2AEB80F6007AAF71 /* Section.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -122,7 +123,6 @@
 				43FEA9142AD8E05E000B0E2A /* Assets.xcassets */,
 				43FEA9162AD8E05E000B0E2A /* LaunchScreen.storyboard */,
 				43FEA9192AD8E05E000B0E2A /* Info.plist */,
-				439B930F2AEB80F6007AAF71 /* Section.swift */,
 			);
 			path = SongOfTheDay;
 			sourceTree = "<group>";
