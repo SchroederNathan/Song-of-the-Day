@@ -2,7 +2,7 @@
 //  Journal+CoreDataProperties.swift
 //  SongOfTheDay
 //
-//  Created by Nathan Schroeder on 2023-11-01.
+//  Created by Nathan Schroeder on 2023-11-03.
 //
 //
 
@@ -16,10 +16,10 @@ extension Journal {
         return NSFetchRequest<Journal>(entityName: "Journal")
     }
 
-    @NSManaged public var date: Date?
+    @NSManaged public var date: Date
     @NSManaged public var goodMood: Bool
-    @NSManaged public var text: String?
-    @NSManaged public var song: Song?
+    @NSManaged public var text: String
+    @NSManaged public var song: Song
 
 }
 

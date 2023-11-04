@@ -71,17 +71,18 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emx-hA-gbq">
-                                                                    <rect key="frame" x="60" y="0.0" width="75" height="30"/>
+                                                                    <rect key="frame" x="60" y="0.0" width="65" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fC-mgy">
-                                                                    <rect key="frame" x="135" y="3" width="20" height="24.333333333333332"/>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrowshape.right.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="IfF-fC-mgy">
+                                                                    <rect key="frame" x="125" y="1" width="30" height="27.666666666666664"/>
                                                                     <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="width" constant="20" id="gRH-nP-o2a"/>
+                                                                        <constraint firstAttribute="width" constant="30" id="tbt-G3-a4Y"/>
                                                                     </constraints>
+                                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="18"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -395,6 +396,9 @@
                     <navigationItem key="navigationItem" title="Create Entry" id="6IC-gs-tLw">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="qFo-Cq-7hW">
                             <color key="tintColor" name="AccentColor"/>
+                            <connections>
+                                <action selector="addEntryButton:" destination="jY0-ra-zyO" id="xZD-mT-JaM"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -404,6 +408,7 @@
                         <outlet property="badDayButtonImage" destination="ph6-Sk-GG1" id="oQy-JU-Lda"/>
                         <outlet property="goodDayButtonImage" destination="49T-az-Xth" id="lHV-pI-onR"/>
                         <outlet property="messageBackground" destination="y4v-bW-8Ar" id="ynC-eT-sp9"/>
+                        <outlet property="messageBox" destination="9U6-7K-evW" id="AZn-jg-fcK"/>
                         <outlet property="progressView" destination="7Ho-u2-tFC" id="Mj4-CP-8DT"/>
                         <outlet property="songBackground" destination="Gp0-Px-jbF" id="iQd-3c-D0C"/>
                         <outlet property="songNameLabel" destination="Jir-Gm-yNY" id="dd8-Zz-RbD"/>
@@ -700,7 +705,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>
         <image name="book.pages.fill" catalog="system" width="107" height="128"/>
         <image name="face.smiling" catalog="system" width="128" height="123"/>

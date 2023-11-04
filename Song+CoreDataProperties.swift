@@ -2,7 +2,7 @@
 //  Song+CoreDataProperties.swift
 //  SongOfTheDay
 //
-//  Created by Nathan Schroeder on 2023-11-01.
+//  Created by Nathan Schroeder on 2023-11-03.
 //
 //
 

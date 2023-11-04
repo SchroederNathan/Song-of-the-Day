@@ -12,9 +12,10 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
 
     // MARK: - Properties
     
-    // Entry properties
-    var newJournalEntry = Journal()
+    // Core data properties
+    lazy private var coreDataStack = CoreDataStack.coreDataStack
     
+    // Entry properties
     var currentSong: TempSong!
     var currentMood: Bool!
     var message: String!
@@ -35,8 +36,12 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     
     @IBOutlet var goodDayButtonImage: UIButton!
     @IBOutlet var badDayButtonImage: UIButton!
+    @IBOutlet var messageBox: UITextField!
     
     
+    @IBAction func addEntryButton(_ sender: UIBarButtonItem) {
+        gatherEntryData()
+    }
     
     // Audio action and outlet
     @IBAction func playAudioButton(_ sender: UIButton) {
@@ -71,6 +76,48 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
             currentMood = false
 
         }
+    }
+    
+    func gatherEntryData() {
+        // Make sure objects are not nil
+        if currentMood != nil && messageBox.text != nil && currentSong != nil {
+            // Create new journal object
+            let newJournalEntry = Journal(context: self.coreDataStack.managedContext)
+            
+            newJournalEntry.date = Date()
+            newJournalEntry.goodMood = currentMood
+            newJournalEntry.text = messageBox.text!
+
+            // Create new song object
+            let newSong = Song(context: self.coreDataStack.managedContext)
+            newSong.artistName = currentSong.artistName
+            newSong.artworkUrl100 = currentSong.artworkUrl100
+            newSong.collectionName = currentSong.collectionName
+            newSong.previewUrl = currentSong.previewUrl
+            newSong.trackName = currentSong.trackName
+            
+            newJournalEntry.song = newSong
+            
+            print(newJournalEntry)
+        } else {
+            if currentMood == nil && currentSong == nil && messageBox.text == "" {
+               errorMessage(error: "You forgot something!", context: "Please dont forget to select a song, choose a mood and write a message.")
+            } else if currentMood == nil && messageBox.text == "" {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to choose a mood and write a message.")
+            } else if currentMood == nil && currentSong == nil {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to select a song and choose a mood.")
+            } else if currentSong == nil && messageBox.text == "" {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to select a song and write a message.")
+            } else if currentSong == nil {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to choose a song.")
+            } else if currentMood == nil {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to choose a mood.")
+            } else if messageBox.text == nil {
+                errorMessage(error: "You forgot something!", context: "Please dont forget to write a message.")
+            }
+            
+        }
+        
     }
     
     
@@ -172,6 +219,13 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
             button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
             audioPlayer.play()
         }
+    }
+    
+    // MARK: - Error functions
+    func errorMessage(error: String, context: String) {
+        let alert = UIAlertController(title: error, message: context, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
     }
     
     

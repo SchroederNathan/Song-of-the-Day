@@ -11,10 +11,10 @@
 		430EFFE82AF2F97100C40EBA /* SongSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430EFFE72AF2F97100C40EBA /* SongSelectViewController.swift */; };
 		430EFFEA2AF2FCEC00C40EBA /* SongSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430EFFE92AF2FCEC00C40EBA /* SongSelectTableViewCell.swift */; };
 		43662B062AF30087001F2DD5 /* JournalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43662B042AF30087001F2DD5 /* JournalModel.xcdatamodeld */; };
-		43662B132AF30603001F2DD5 /* Journal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B0F2AF30603001F2DD5 /* Journal+CoreDataClass.swift */; };
-		43662B142AF30603001F2DD5 /* Journal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B102AF30603001F2DD5 /* Journal+CoreDataProperties.swift */; };
-		43662B152AF30603001F2DD5 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B112AF30603001F2DD5 /* Song+CoreDataClass.swift */; };
-		43662B162AF30603001F2DD5 /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B122AF30603001F2DD5 /* Song+CoreDataProperties.swift */; };
+		43662B1B2AF5D02E001F2DD5 /* Journal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B172AF5D02E001F2DD5 /* Journal+CoreDataClass.swift */; };
+		43662B1C2AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B182AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift */; };
+		43662B1D2AF5D02E001F2DD5 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B192AF5D02E001F2DD5 /* Song+CoreDataClass.swift */; };
+		43662B1E2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B1A2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift */; };
 		439B93092AEB5E6B007AAF71 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B93082AEB5E6B007AAF71 /* Song.swift */; };
 		439B930B2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B930A2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift */; };
 		439B930E2AEB80B7007AAF71 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B930D2AEB80B7007AAF71 /* JournalEntry.swift */; };
@@ -33,10 +33,10 @@
 		430EFFE72AF2F97100C40EBA /* SongSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectViewController.swift; sourceTree = "<group>"; };
 		430EFFE92AF2FCEC00C40EBA /* SongSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectTableViewCell.swift; sourceTree = "<group>"; };
 		43662B052AF30087001F2DD5 /* JournalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalModel.xcdatamodel; sourceTree = "<group>"; };
-		43662B0F2AF30603001F2DD5 /* Journal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		43662B102AF30603001F2DD5 /* Journal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		43662B112AF30603001F2DD5 /* Song+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		43662B122AF30603001F2DD5 /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		43662B172AF5D02E001F2DD5 /* Journal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		43662B182AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		43662B192AF5D02E001F2DD5 /* Song+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		43662B1A2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		439B93082AEB5E6B007AAF71 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
 		439B930A2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryCollectionViewCell.swift; sourceTree = "<group>"; };
 		439B930D2AEB80B7007AAF71 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
@@ -66,10 +66,10 @@
 		430EFFD02AF2DA7D00C40EBA /* CoreData Model */ = {
 			isa = PBXGroup;
 			children = (
-				43662B0F2AF30603001F2DD5 /* Journal+CoreDataClass.swift */,
-				43662B102AF30603001F2DD5 /* Journal+CoreDataProperties.swift */,
-				43662B112AF30603001F2DD5 /* Song+CoreDataClass.swift */,
-				43662B122AF30603001F2DD5 /* Song+CoreDataProperties.swift */,
+				43662B172AF5D02E001F2DD5 /* Journal+CoreDataClass.swift */,
+				43662B182AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift */,
+				43662B192AF5D02E001F2DD5 /* Song+CoreDataClass.swift */,
+				43662B1A2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift */,
 				43662B042AF30087001F2DD5 /* JournalModel.xcdatamodeld */,
 				430EFFD92AF2DFF000C40EBA /* CoreDataStack.swift */,
 			);
@@ -222,14 +222,14 @@
 				430EFFEA2AF2FCEC00C40EBA /* SongSelectTableViewCell.swift in Sources */,
 				43FEA90E2AD8E05C000B0E2A /* SceneDelegate.swift in Sources */,
 				439B930B2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift in Sources */,
-				43662B132AF30603001F2DD5 /* Journal+CoreDataClass.swift in Sources */,
-				43662B142AF30603001F2DD5 /* Journal+CoreDataProperties.swift in Sources */,
+				43662B1B2AF5D02E001F2DD5 /* Journal+CoreDataClass.swift in Sources */,
+				43662B1C2AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift in Sources */,
 				43FEA9202AD8E1B3000B0E2A /* CreateEntryViewController.swift in Sources */,
 				430EFFDA2AF2DFF000C40EBA /* CoreDataStack.swift in Sources */,
 				439B93102AEB80F6007AAF71 /* Section.swift in Sources */,
-				43662B162AF30603001F2DD5 /* Song+CoreDataProperties.swift in Sources */,
+				43662B1E2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift in Sources */,
 				439B930E2AEB80B7007AAF71 /* JournalEntry.swift in Sources */,
-				43662B152AF30603001F2DD5 /* Song+CoreDataClass.swift in Sources */,
+				43662B1D2AF5D02E001F2DD5 /* Song+CoreDataClass.swift in Sources */,
 				43662B062AF30087001F2DD5 /* JournalModel.xcdatamodeld in Sources */,
 				430EFFE82AF2F97100C40EBA /* SongSelectViewController.swift in Sources */,
 				439B93092AEB5E6B007AAF71 /* Song.swift in Sources */,

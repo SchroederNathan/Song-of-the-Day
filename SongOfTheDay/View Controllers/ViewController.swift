@@ -46,9 +46,17 @@ class ViewController: UIViewController {
     func createDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, entry in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? JournalEntryCollectionViewCell
-            self.fetchImage(for: entry.song!.artworkUrl100 ?? "", for: cell!)
-            cell?.songInfo.text = "\(entry.song?.artistName ?? "error") • \(entry.song?.artistName ?? "error")"
-            cell?.journalDate.text = entry.date?.description
+            self.fetchImage(for: entry.song.artworkUrl100 ?? "", for: cell!)
+            cell?.songInfo.text = "\(entry.song.artistName ?? "error") • \(entry.song.artistName ?? "error")"
+            cell?.journalDate.text = entry.date.description
+            
+            if entry.goodMood == true {
+                cell?.goodDayButton.image = UIImage(systemName: "hand.thumbsup.fill")
+                cell?.badDayButton.image = UIImage(systemName: "hand.thumbsdown")
+            } else {
+                cell?.goodDayButton.image = UIImage(systemName: "hand.thumbsup")
+                cell?.badDayButton.image = UIImage(systemName: "hand.thumbsdown.fill")
+            }
             
             // Give each cell a corner radius
             cell?.layer.cornerRadius = 15
