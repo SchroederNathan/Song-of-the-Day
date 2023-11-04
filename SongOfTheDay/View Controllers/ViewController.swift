@@ -19,7 +19,6 @@ class ViewController: UIViewController {
     var journalEntrys = [Journal]()
     lazy private var coreDataStack = CoreDataStack.coreDataStack
 
-
     let cellIdentifier = "journalCell"
     
     private lazy var collectionViewDataSource = createDataSource()
@@ -47,7 +46,7 @@ class ViewController: UIViewController {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, entry in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? JournalEntryCollectionViewCell
             self.fetchImage(for: entry.song.artworkUrl100 ?? "", for: cell!)
-            cell?.songInfo.text = "\(entry.song.artistName ?? "error") • \(entry.song.artistName ?? "error")"
+            cell?.songInfo.text = "\(entry.song.artistName ?? "error") • \(entry.song.trackName ?? "error")"
             cell?.journalDate.text = entry.date.description
             
             if entry.goodMood == true {

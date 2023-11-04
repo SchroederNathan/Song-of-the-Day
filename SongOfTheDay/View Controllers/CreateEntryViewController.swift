@@ -98,6 +98,8 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
             
             newJournalEntry.song = newSong
             
+            coreDataStack.saveContext()
+            
             print(newJournalEntry)
         } else {
             if currentMood == nil && currentSong == nil && messageBox.text == "" {
@@ -112,7 +114,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
                 errorMessage(error: "You forgot something!", context: "Please dont forget to choose a song.")
             } else if currentMood == nil {
                 errorMessage(error: "You forgot something!", context: "Please dont forget to choose a mood.")
-            } else if messageBox.text == nil {
+            } else if messageBox.text == "" {
                 errorMessage(error: "You forgot something!", context: "Please dont forget to write a message.")
             }
             
@@ -126,9 +128,11 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        messageBackground.layer.cornerRadius = 7.5
-        songBackground.layer.cornerRadius = 7.5
-        albumImageView.layer.cornerRadius = 7.5
+        messageBackground.layer.cornerRadius = 15
+        songBackground.layer.cornerRadius = 15
+        albumImageView.layer.cornerRadius = 15
+        
+        messageBox.delegate = self
 
     }
     
@@ -235,6 +239,14 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         displayVC.delegate = self
     }
 
+}
+
+extension CreateEntryViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        
+        return true
+    }
 }
 
 

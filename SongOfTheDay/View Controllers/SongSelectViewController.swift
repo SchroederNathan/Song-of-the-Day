@@ -43,8 +43,8 @@ class SongSelectViewController: UIViewController {
             let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier, for: indexPath) as! SongSelectTableViewCell
             
             // Give image and background view corner radius's
-            cell.backView.layer.cornerRadius = 7.5
-            cell.songArtwork.layer.cornerRadius = 7.5
+            cell.backView.layer.cornerRadius = 15
+            cell.songArtwork.layer.cornerRadius = 15
             
             // Set text
             cell.songNameLabel.text = song.trackName
@@ -178,8 +178,10 @@ extension SongSelectViewController: UISearchBarDelegate {
         // Conveert text so it is safe for URL's
         guard let text = searchBar.text, !text.isEmpty, let safeText = text.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else { return }
         fetchSongInfo(query: safeText)
-        print(safeText)
+        
+        searchBar.resignFirstResponder()
     }
+    
 }
 
 // MARK: Audio delegate
