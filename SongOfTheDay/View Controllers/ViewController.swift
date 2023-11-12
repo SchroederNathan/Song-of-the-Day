@@ -13,11 +13,15 @@ class ViewController: UIViewController {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Journal>
 
+    //    weak var delegate : ViewControllerDelegate?
+    var passedJournal: Journal?
     
     //MARK: - Properties
     var songs = [Song]()
     var journalEntrys = [Journal]()
     lazy private var coreDataStack = CoreDataStack.coreDataStack
+    
+    var passedEntry: Journal!
 
     let cellIdentifier = "journalCell"
     
@@ -45,6 +49,9 @@ class ViewController: UIViewController {
     func createDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, entry in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? JournalEntryCollectionViewCell
+            
+            cell?.delegate = self
+            
             self.fetchImage(for: entry.song.artworkUrl100 ?? "", for: cell!)
             cell?.songInfo.text = "\(entry.song.artistName ?? "error") • \(entry.song.trackName ?? "error")"
             cell?.journalDate.text = entry.date.description
@@ -57,9 +64,12 @@ class ViewController: UIViewController {
                 cell?.badDayButton.image = UIImage(systemName: "hand.thumbsdown.fill")
             }
             
+            cell?.currentEntry = entry
+            
             // Give each cell a corner radius
             cell?.layer.cornerRadius = 15
             cell?.songArtwork.layer.cornerRadius = 15
+            
             
             return cell
         }
@@ -105,11 +115,35 @@ class ViewController: UIViewController {
                 }
             }
         }
-            
         imageFetchTask.resume()
     }
-
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Pass the movie that was tapped to the Detail View Controller
+//        let entryToPass = passedEntry  //.itemIdentifier(for: index)
+        guard let passed = passedJournal else { return }
+        
+        if segue.identifier == "showSong" {
+            let destinationVC = segue.destination as! EntryDetailViewController
+            
+            destinationVC.passedEntry = passed
+            
+        }
+        
+    }
 
 
 }
 
+extension ViewController: CustomEntryCellDelegate {
+    func passEntryData(data: Journal) {
+        print("passed entry")
+        passedJournal = data
+        performSegue(withIdentifier: "showSong", sender: nil)
+    }
+}
+
+protocol ViewControllerDelegate : NSObjectProtocol{
+    func doSomethingWithEntry(data: Journal)
+}

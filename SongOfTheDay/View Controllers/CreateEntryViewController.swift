@@ -36,7 +36,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     
     @IBOutlet var goodDayButtonImage: UIButton!
     @IBOutlet var badDayButtonImage: UIButton!
-    @IBOutlet var messageBox: UITextField!
+    @IBOutlet var messageBox: UITextView!
     
     
     @IBAction func addEntryButton(_ sender: UIBarButtonItem) {
@@ -126,7 +126,8 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.prefersLargeTitles = true
+        //navigationController?.navigationBar.prefersLargeTitles = true
+
         
         messageBackground.layer.cornerRadius = 15
         songBackground.layer.cornerRadius = 15
@@ -241,7 +242,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
 
 }
 
-extension CreateEntryViewController: UITextFieldDelegate {
+extension CreateEntryViewController: UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
