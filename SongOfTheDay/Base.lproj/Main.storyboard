@@ -267,6 +267,7 @@
                                                                                 <buttonConfiguration key="configuration" style="plain" image="play.circle.fill" catalog="system"/>
                                                                                 <connections>
                                                                                     <action selector="playAudioButton:" destination="jY0-ra-zyO" eventType="touchUpInside" id="gaQ-nS-tjg"/>
+                                                                                    <action selector="playAudioButton:" destination="ozg-ym-vVE" eventType="touchUpInside" id="zVJ-Af-ADI"/>
                                                                                 </connections>
                                                                             </button>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zsK-IN-hnk">
@@ -442,6 +443,7 @@
                         <outlet property="goodDayImage" destination="6Dj-Z0-8pe" id="IiZ-Yq-A2j"/>
                         <outlet property="messageBackround" destination="VvA-kv-YjO" id="kTG-hh-0RM"/>
                         <outlet property="messageLabel" destination="NXI-Wj-DBK" id="aoW-5a-Pg6"/>
+                        <outlet property="progressView" destination="Inz-n3-M29" id="eab-el-fSM"/>
                         <outlet property="selectSongButtonImage" destination="fLn-hu-hMK" id="emI-EB-Jam"/>
                         <outlet property="songNameLabel" destination="AN8-rQ-YgB" id="szA-fj-4Rt"/>
                     </connections>

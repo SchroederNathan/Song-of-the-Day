@@ -7,6 +7,7 @@
 
 import UIKit
 import CoreData
+import AVKit
 
 class EntryDetailViewController: UIViewController, SongSelectViewControllerDelegate {
     
@@ -20,6 +21,12 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
     var currentMood: Bool!
     
     var editMode = false
+    
+    // Audio properties
+    var audioPlayer = AVPlayer()
+    var playerItem: AVPlayerItem!
+    var isPlaying = false
+    var audioButton = UIButton()
 
     // MARK: - Outlets
     @IBOutlet var songNameLabel: UILabel!
@@ -34,6 +41,8 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var messageBackround: UIView!
     
     @IBOutlet var selectSongButtonImage: UIButton!
+    
+    @IBOutlet var progressView: UIProgressView!
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
         //navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.accent ]
@@ -79,6 +88,12 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
             
         }
     }
+    
+    @IBAction func playAudioButton(_ sender: UIButton) {
+        playSong(forUrl: currentSong.previewUrl!, progressView: progressView, button: sender)
+
+    }
+    
     func moodToggle(mood: Bool) {
         if mood {
             goodDayImage.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
@@ -127,6 +142,11 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        // Pauses the audio once song is either selected or view is closed
+        audioPlayer.pause()
+    }
+    
     // MARK: - Fetch Images
     func fetchImage(for path: String, for albumImage: UIImageView) {
         
@@ -162,6 +182,63 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         print(currentSong ?? data)
     }
     
+    // MARK: - Audio methods
+    func playSong(forUrl urlString: String, progressView: UIProgressView, button: UIButton) {
+        guard let url = URL(string: urlString) else { return }
+        playerItem = AVPlayerItem(url: url)
+        audioPlayer = AVPlayer(playerItem: playerItem)
+        
+        togglePlayer(button: button)
+        
+        audioButton = button
+        
+        // Triggers when preview song is done playing
+        NotificationCenter.default.addObserver(self, selector: #selector(finishedPlaying), name: Notification.Name.AVPlayerItemDidPlayToEndTime, object: audioPlayer.currentItem)
+        
+        let interval = CMTimeMake(value: 1, timescale: 10)
+        
+        // Updates progressView
+        audioPlayer.addPeriodicTimeObserver(forInterval: interval, queue: DispatchQueue.main) { _ in
+            if self.audioPlayer.status == .readyToPlay {
+                // run the update to the progress
+                self.updateProgress(for: self.playerItem, progressView: progressView)
+            }
+        }
+        
+    }
+    
+    // Calculates and displays progress of songs on the progressView in tableview cells
+    func updateProgress(for item: AVPlayerItem, progressView: UIProgressView) {
+        let duration = CMTimeGetSeconds(item.duration)
+        let currentTime = CMTimeGetSeconds(item.currentTime())
+        
+        progressView.progress = Float(currentTime/duration)
+        
+        if progressView.progress >= 1.0 {
+            progressView.progress = 0.0
+        }
+        
+    }
+    
+    // Reset to play button image when preview song is done playing
+    @objc func finishedPlaying() {
+        audioButton.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+    }
+    
+    func togglePlayer(button: UIButton) {
+        if isPlaying {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            progressView.progress = 0.0
+            audioPlayer.pause()
+        } else {
+            isPlaying.toggle()
+            // Change image
+            button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+            audioPlayer.play()
+        }
+    }
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let displayVC = segue.destination as! SongSelectViewController
