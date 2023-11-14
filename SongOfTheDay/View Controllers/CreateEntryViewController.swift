@@ -126,7 +126,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = true
 
         
         messageBackground.layer.cornerRadius = 15

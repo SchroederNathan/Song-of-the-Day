@@ -253,9 +253,8 @@ extension SongSelectViewController: CustomCellDelegate {
         // Pass data to previous controller
         if let delegate = delegate{
             delegate.doSomethingWith(data: data)
+            print("Worked!")
         }
-        
-        print("Worked!")
         
         // Dismiss view controller
         navigationController?.popViewController(animated: true)
@@ -268,6 +267,7 @@ extension SongSelectViewController: CustomCellDelegate {
 
 protocol SongSelectViewControllerDelegate : NSObjectProtocol{
     func doSomethingWith(data: TempSong)
+
 }
 
 
