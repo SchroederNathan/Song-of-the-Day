@@ -16,7 +16,7 @@
 		43662B1D2AF5D02E001F2DD5 /* Song+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B192AF5D02E001F2DD5 /* Song+CoreDataClass.swift */; };
 		43662B1E2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B1A2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift */; };
 		43662B202AF6023C001F2DD5 /* EntryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B1F2AF6023C001F2DD5 /* EntryDetailViewController.swift */; };
-		439B93092AEB5E6B007AAF71 /* Song.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B93082AEB5E6B007AAF71 /* Song.swift */; };
+		439B93092AEB5E6B007AAF71 /* FetchSong.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B93082AEB5E6B007AAF71 /* FetchSong.swift */; };
 		439B930B2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B930A2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift */; };
 		439B930E2AEB80B7007AAF71 /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B930D2AEB80B7007AAF71 /* JournalEntry.swift */; };
 		439B93102AEB80F6007AAF71 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 439B930F2AEB80F6007AAF71 /* Section.swift */; };
@@ -39,7 +39,7 @@
 		43662B192AF5D02E001F2DD5 /* Song+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		43662B1A2AF5D02E001F2DD5 /* Song+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Song+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		43662B1F2AF6023C001F2DD5 /* EntryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryDetailViewController.swift; sourceTree = "<group>"; };
-		439B93082AEB5E6B007AAF71 /* Song.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Song.swift; sourceTree = "<group>"; };
+		439B93082AEB5E6B007AAF71 /* FetchSong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSong.swift; sourceTree = "<group>"; };
 		439B930A2AEB7E90007AAF71 /* JournalEntryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntryCollectionViewCell.swift; sourceTree = "<group>"; };
 		439B930D2AEB80B7007AAF71 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		439B930F2AEB80F6007AAF71 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		439B930C2AEB7F76007AAF71 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				439B93082AEB5E6B007AAF71 /* Song.swift */,
+				439B93082AEB5E6B007AAF71 /* FetchSong.swift */,
 				439B930D2AEB80B7007AAF71 /* JournalEntry.swift */,
 			);
 			path = Models;
@@ -236,7 +236,7 @@
 				43662B1D2AF5D02E001F2DD5 /* Song+CoreDataClass.swift in Sources */,
 				43662B062AF30087001F2DD5 /* JournalModel.xcdatamodeld in Sources */,
 				430EFFE82AF2F97100C40EBA /* SongSelectViewController.swift in Sources */,
-				439B93092AEB5E6B007AAF71 /* Song.swift in Sources */,
+				439B93092AEB5E6B007AAF71 /* FetchSong.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

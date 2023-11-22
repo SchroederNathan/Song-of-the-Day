@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import AVKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Journal>
 
@@ -21,22 +21,30 @@ class ViewController: UIViewController {
     var journalEntrys = [Journal]()
     lazy private var coreDataStack = CoreDataStack.coreDataStack
     
+    var editMode = false
+    
     var passedEntry: Journal!
 
     let cellIdentifier = "journalCell"
     
     private lazy var collectionViewDataSource = createDataSource()
     
-    //MARK: - Outlets
+    // MARK: - Outlets
     @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var viewEntryButton: UIBarButtonItem!
     
-    
+    // MARK: - Actions
+    @IBAction func toggleEditButton(_ sender: UIBarButtonItem) {
+        toggleEdit(navButton: sender)
+        fetchJournalEntrys()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Make title large
         navigationController?.navigationBar.prefersLargeTitles = true
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -44,8 +52,20 @@ class ViewController: UIViewController {
         
     }
     
-    // MARK: - Datasource Methods
+    func toggleEdit(navButton: UIBarButtonItem) {
+        if editMode != true {
+            self.title = "Edit Mode"
+            navButton.image = UIImage(systemName: "checkmark")
+            editMode.toggle()
+        } else {
+            self.title = "Journal Entries"
+            navButton.image = UIImage(systemName: "pencil")
+            editMode.toggle()
+        }
+
+    }
     
+    // MARK: - Datasource Methods
     func createDataSource() -> DataSource {
         let dataSource = DataSource(collectionView: collectionView) { collectionView, indexPath, entry in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.cellIdentifier, for: indexPath) as? JournalEntryCollectionViewCell
@@ -62,6 +82,12 @@ class ViewController: UIViewController {
             } else {
                 cell?.goodDayButton.image = UIImage(systemName: "hand.thumbsup")
                 cell?.badDayButton.image = UIImage(systemName: "hand.thumbsdown.fill")
+            }
+            
+            if self.editMode {
+                cell?.viewEntryButtonImage.isHidden = true
+            } else {
+                cell?.viewEntryButtonImage.isHidden = false
             }
             
             cell?.currentEntry = entry
@@ -88,7 +114,7 @@ class ViewController: UIViewController {
         let fetchRequest: NSFetchRequest<Journal> = Journal.fetchRequest()
         
         // Sort data by date of journal entry
-        let sorting = NSSortDescriptor(key: "date", ascending: true)
+        let sorting = NSSortDescriptor(key: "date", ascending: false)
         fetchRequest.sortDescriptors = [sorting]
         
         do {

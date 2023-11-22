@@ -16,7 +16,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     lazy private var coreDataStack = CoreDataStack.coreDataStack
     
     // Entry properties
-    var currentSong: TempSong!
+    var currentSong: FetchSong!
     var currentMood: Bool!
     var message: String!
     
@@ -134,10 +134,18 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         albumImageView.layer.cornerRadius = 15
         
         messageBox.delegate = self
+        
+        // Looks for single or multiple taps and dismiss's keyboard
+         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        // Doesn't interdere with other tap gestures now
+        tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
 
     }
     
-    func doSomethingWith(data: TempSong) {
+    func doSomethingWith(data: FetchSong) {
         
         // Setup the UI according to the selected song
         songNameLabel.text = data.trackName
@@ -239,6 +247,12 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         let displayVC = segue.destination as! SongSelectViewController
         displayVC.delegate = self
     }
+    
+    // Dissmiss's keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+
 
 }
 

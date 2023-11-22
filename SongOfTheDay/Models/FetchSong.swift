@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct TempSongs: Decodable {
-    var results: [TempSong]
+struct FetchSongs: Decodable {
+    var results: [FetchSong]
 }
 
-struct TempSong: Codable, Hashable {
+struct FetchSong: Codable, Hashable {
     var artistName: String
     var collectionName: String
     var trackName: String

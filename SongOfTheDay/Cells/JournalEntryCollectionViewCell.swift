@@ -22,9 +22,12 @@ class JournalEntryCollectionViewCell: UICollectionViewCell {
     @IBOutlet var goodDayButton: UIImageView!
     @IBOutlet var badDayButton: UIImageView!
     @IBOutlet var journalDate: UILabel!
+    @IBOutlet var viewEntryButtonImage: UIButton!
     
     // MARK: Actions
     @IBAction func detailButton(_ sender: UIButton) {
         delegate?.passEntryData(data: currentEntry)
     }
+    
+    
 }

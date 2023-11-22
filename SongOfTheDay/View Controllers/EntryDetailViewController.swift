@@ -40,8 +40,9 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var cardBackround: UIView!
     @IBOutlet var messageBackround: UIView!
     
+    // Audio outlets
     @IBOutlet var selectSongButtonImage: UIButton!
-    
+    @IBOutlet var playButtonImage: UIButton!
     @IBOutlet var progressView: UIProgressView!
     
     @IBAction func editButton(_ sender: UIBarButtonItem) {
@@ -139,6 +140,13 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         cardBackround.layer.cornerRadius = 15
         messageBackround.layer.cornerRadius = 15
         
+        // Looks for single or multiple taps and dismiss's keyboard
+         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+
+        // Doesn't interdere with other tap gestures now
+        tap.cancelsTouchesInView = false
+
+        view.addGestureRecognizer(tap)
         
     }
     
@@ -165,7 +173,7 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         imageFetchTask.resume()
     }
     
-    func doSomethingWith(data: TempSong) {
+    func doSomethingWith(data: FetchSong) {
         
         // Setup the UI according to the selected song
         songNameLabel.text = data.trackName
@@ -243,6 +251,7 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let displayVC = segue.destination as! SongSelectViewController
         displayVC.delegate = self
+        togglePlayer(button: playButtonImage)
     }
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
@@ -250,6 +259,11 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
             return false
         }
         return true
+    }
+    
+    // Dissmiss's keyboard
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
 }

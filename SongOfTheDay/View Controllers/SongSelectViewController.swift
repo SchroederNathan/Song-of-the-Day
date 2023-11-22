@@ -13,10 +13,10 @@ class SongSelectViewController: UIViewController {
     weak var delegate : SongSelectViewControllerDelegate?
 
     
-    typealias DataSource = UITableViewDiffableDataSource<Section, TempSong>
+    typealias DataSource = UITableViewDiffableDataSource<Section, FetchSong>
 
     // MARK: - properties
-    var songs = [TempSong]()
+    var songs = [FetchSong]()
     private lazy var tableDataSource = createDataSource()
     let cellIdentifier = "songCell"
     
@@ -70,7 +70,7 @@ class SongSelectViewController: UIViewController {
     }
     
     func createSnapshot() {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, TempSong>()
+        var snapshot = NSDiffableDataSourceSnapshot<Section, FetchSong>()
         snapshot.appendSections([.main])
         snapshot.appendItems(songs)
         snapshot.reloadItems(songs)
@@ -122,7 +122,7 @@ class SongSelectViewController: UIViewController {
                     
                     // Decode the json to a valid array
                     let decoder = JSONDecoder()
-                    let results = try decoder.decode(TempSongs.self, from: data)
+                    let results = try decoder.decode(FetchSongs.self, from: data)
                     
                     // Put all searched songs into the songs array
                     self.songs = results.results
@@ -248,7 +248,7 @@ extension SongSelectViewController: CustomCellDelegate {
     }
     
     // MARK: - Pass song data
-    func passSongData(data: TempSong) {
+    func passSongData(data: FetchSong) {
         
         // Pass data to previous controller
         if let delegate = delegate{
@@ -266,7 +266,7 @@ extension SongSelectViewController: CustomCellDelegate {
 // MARK: - Protocol
 
 protocol SongSelectViewControllerDelegate : NSObjectProtocol{
-    func doSomethingWith(data: TempSong)
+    func doSomethingWith(data: FetchSong)
 
 }
 
