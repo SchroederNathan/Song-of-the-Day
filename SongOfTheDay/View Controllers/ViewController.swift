@@ -44,7 +44,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         // Make title large
         navigationController?.navigationBar.prefersLargeTitles = true
-        
+        setupLongGestureRecognizerOnCollection()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,9 +52,36 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    func setupLongGestureRecognizerOnCollection() {
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        collectionView?.addGestureRecognizer(longPressedGesture)
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if (gestureRecognizer.state != .began) {
+            return
+        }
+        
+        if editMode {
+            let location = gestureRecognizer.location(in: collectionView)
+            
+            guard let indexPath = collectionView?.indexPathForItem(at: location) else { return }
+            
+            let selectedEntry = journalEntrys[indexPath.row]
+            coreDataStack.managedContext.delete(selectedEntry)
+            journalEntrys.remove(at: indexPath.row)
+            
+            coreDataStack.saveContext()
+            fetchJournalEntrys()
+        }
+    }
+    
     func toggleEdit(navButton: UIBarButtonItem) {
         if editMode != true {
-            self.title = "Edit Mode"
+            self.title = "Long Press to Delete"
             navButton.image = UIImage(systemName: "checkmark")
             editMode.toggle()
         } else {
