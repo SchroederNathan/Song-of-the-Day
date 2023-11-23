@@ -13,7 +13,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Journal>
 
-    //    weak var delegate : ViewControllerDelegate?
     var passedJournal: Journal?
     
     //MARK: - Properties
@@ -170,11 +169,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         imageFetchTask.resume()
     }
+    
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         // Pass the movie that was tapped to the Detail View Controller
-//        let entryToPass = passedEntry  //.itemIdentifier(for: index)
         guard let passed = passedJournal else { return }
         
         if segue.identifier == "showSong" {

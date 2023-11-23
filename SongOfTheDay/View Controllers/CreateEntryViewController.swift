@@ -101,6 +101,9 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
             coreDataStack.saveContext()
             
             print(newJournalEntry)
+            
+            createdEntryMessage()
+            
         } else {
             if currentMood == nil && currentSong == nil && messageBox.text == "" {
                errorMessage(error: "You forgot something!", context: "Please dont forget to select a song, choose a mood and write a message.")
@@ -234,13 +237,67 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         }
     }
     
-    // MARK: - Error functions
+    // MARK: - Alert methods
     func errorMessage(error: String, context: String) {
         let alert = UIAlertController(title: error, message: context, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
     }
     
+    // MARK: Animation methods
+    func createdEntryMessage() {
+        // Start custom animation
+        let customAnimation = CustomAnimation()
+        customAnimation.frame = view.bounds
+        customAnimation.isOpaque = false
+        
+        // Apply some visual effects for the animation
+        let blurryBackground = UIBlurEffect(style: .regular)
+        let blurryView = UIVisualEffectView(effect: blurryBackground)
+        blurryView.frame = view.bounds
+        
+        // Add the animation and its effects to the subview
+        view.addSubview(blurryView)
+        view.addSubview(customAnimation)
+        
+        // Disable user interactivity
+        view.isUserInteractionEnabled = false
+        
+        // Play the animation
+        customAnimation.showDialog()
+        
+        // How long until it switches to the other view controller
+        let delay = 1.25
+        
+        DispatchQueue.main.asyncAfter(deadline: .now()+delay, execute:  {
+            // Change back to viewcontroller.swift
+            self.tabBarController?.selectedIndex = 0
+        })
+        
+        // Get rid of the visual effects from animation
+        for subview in self.view.subviews {
+            if subview is UIVisualEffectView {
+                subview.removeFromSuperview()
+            }
+        }
+        
+        // Reset objects
+        self.currentMood = nil
+        self.messageBox.text = ""
+        self.currentSong = nil
+        
+        // Reset the mood button images
+        self.goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+        self.badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+        
+        // Reset song card UI
+        self.songNameLabel.text = "Song Name"
+        self.artistNameLabel.text = "Artist Name"
+        self.albumNameLabel.text = "Album Name"
+        self.albumImageView.image = UIImage(systemName: "questionmark.app.fill")
+        
+        self.view.isUserInteractionEnabled = true
+    }
     
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
