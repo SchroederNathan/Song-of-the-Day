@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-class CreateEntryViewController: UIViewController, SongSelectViewControllerDelegate {
+class CreateEntryViewController: UIViewController, SongSelectViewControllerDelegate, UIGestureRecognizerDelegate {
 
     // MARK: - Properties
     
@@ -39,7 +39,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var messageBox: UITextView!
     @IBOutlet var audioButtonImage: UIButton!
     
-    
+    // MARK: - Actions
     @IBAction func addEntryButton(_ sender: UIBarButtonItem) {
         gatherEntryData()
     }
@@ -54,8 +54,6 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     
     @IBOutlet var progressView: UIProgressView!
     
-    
-    // MARK: - Actions
     @IBAction func goodDayButton(_ sender: UIButton) {
         moodToggle(mood: true)
         print(currentMood!)
@@ -66,11 +64,13 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     }
     
     func moodToggle(mood: Bool) {
+        // If good mood
         if mood {
             goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup.fill"), for: .normal)
             badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
             currentMood = true
             
+        // If bad mood
         } else {
             goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
             badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown.fill"), for: .normal)
@@ -147,18 +147,38 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
 
         view.addGestureRecognizer(tap)
         
+        // Adds a swipe gesture to delete current selected song
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
         swipeRight.direction = UISwipeGestureRecognizer.Direction.right
         
+        // Add the gesture to the card background
         songBackground.addGestureRecognizer(swipeRight)
-        //self.view.addGestureRecognizer(swipeRight)
-
-//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
-//        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
-//        self.view.addGestureRecognizer(swipeDown)
+        
+        // Long press gesture on album image to scale image 2X
+        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imageTapped(longPressGestureRecognizer:)))
+        albumImageView.isUserInteractionEnabled = true
+        albumImageView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        // Long press properties
+        longPressGestureRecognizer.minimumPressDuration = 0.5
+        longPressGestureRecognizer.delegate = self
+        longPressGestureRecognizer.delaysTouchesBegan = true
 
     }
     
+    // MARK: Gesture recognizer methods
+    
+    // Long press gesture to scale image
+    @objc func imageTapped(longPressGestureRecognizer: UILongPressGestureRecognizer) {
+        let tappedImage = longPressGestureRecognizer.view as! UIImageView
+        let currentFrame = tappedImage.frame;
+        // get existing width and height of image and double it
+        UIView.animate(withDuration: 0.5) {
+            tappedImage.frame = CGRect(x: 0, y: 0, width: currentFrame.width * 200, height: currentFrame.height * 200);
+        }
+    }
+    
+    // Swipe gessture to delete current selected song
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
         if let swipeGesture = gesture as? UISwipeGestureRecognizer {
             if swipeGesture.direction == UISwipeGestureRecognizer.Direction.right {
@@ -253,15 +273,19 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     }
     
     func togglePlayer(button: UIButton) {
+        
+        // toggles audio off
         if isPlaying {
             isPlaying.toggle()
             // Change image
             if button.imageView?.image != UIImage(systemName: "play.circle.fill") {
                 button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
             }
-
+            
             progressView.progress = 0.0
             audioPlayer.pause()
+            
+        // Toggles audio on
         } else {
             isPlaying.toggle()
             // Change image
