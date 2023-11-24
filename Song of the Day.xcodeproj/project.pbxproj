@@ -209,7 +209,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 43FEA9032AD8E05C000B0E2A /* Build configuration list for PBXProject "SongOfTheDay" */;
+			buildConfigurationList = 43FEA9032AD8E05C000B0E2A /* Build configuration list for PBXProject "Song of the Day" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -468,7 +468,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		43FEA9032AD8E05C000B0E2A /* Build configuration list for PBXProject "SongOfTheDay" */ = {
+		43FEA9032AD8E05C000B0E2A /* Build configuration list for PBXProject "Song of the Day" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43FEA91A2AD8E05E000B0E2A /* Debug */,

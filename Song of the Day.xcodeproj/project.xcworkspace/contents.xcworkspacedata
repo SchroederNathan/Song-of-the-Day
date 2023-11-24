@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:">
+      location = "self:/Users/nate/Downloads/SongOfTheDay/Song of the Day.xcodeproj">
    </FileRef>
 </Workspace>
