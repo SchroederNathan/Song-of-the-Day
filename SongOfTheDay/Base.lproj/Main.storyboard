@@ -22,7 +22,7 @@
         <!--Journal Entries-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="EntryViewController" title="Journal Entries" id="BYZ-38-t0r" customClass="ViewController" customModule="SongOfTheDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryViewController" title="Journal Entries" id="BYZ-38-t0r" customClass="ViewController" customModule="Song_of_the_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                     <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="journalCell" id="h4l-aI-V8c" customClass="JournalEntryCollectionViewCell" customModule="SongOfTheDay" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="journalCell" id="h4l-aI-V8c" customClass="JournalEntryCollectionViewCell" customModule="Song_of_the_Day" customModuleProvider="target">
                                         <rect key="frame" x="15" y="0.0" width="175" height="275"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Yll-gf-ZiM">
@@ -47,14 +47,17 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="uwc-0U-pwX">
                                                     <rect key="frame" x="10" y="10" width="155" height="255"/>
                                                     <subviews>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cc-cw-fGG">
-                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="178.33333333333334"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2cc-cw-fGG">
+                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="155"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" secondItem="2cc-cw-fGG" secondAttribute="height" multiplier="155:155" id="unb-gj-5yu"/>
+                                                            </constraints>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NR1-no-1JA">
-                                                            <rect key="frame" x="0.0" y="183.33333333333334" width="155" height="18"/>
+                                                            <rect key="frame" x="0.0" y="160" width="155" height="25.333333333333343"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist name • Song name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kz5-3b-Z4K">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="18"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="25.333333333333332"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="13"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -62,30 +65,30 @@
                                                             </subviews>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K2I-wW-29X">
-                                                            <rect key="frame" x="0.0" y="206.33333333333334" width="155" height="30"/>
+                                                            <rect key="frame" x="0.0" y="190.33333333333334" width="155" height="30"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mA3-XF-2DT">
-                                                                    <rect key="frame" x="0.0" y="0.99999999999999822" width="30" height="28.666666666666664"/>
+                                                                    <rect key="frame" x="0.0" y="0.99999999999999822" width="19.666666666666668" height="28.666666666666664"/>
                                                                     <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="ijf-l0-Rk7"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="face.smiling" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="izq-6H-On9">
-                                                                    <rect key="frame" x="30" y="0.99999999999999822" width="30" height="28.666666666666664"/>
+                                                                    <rect key="frame" x="19.666666666666664" y="0.99999999999999822" width="19.666666666666664" height="28.666666666666664"/>
                                                                     <color key="tintColor" name="AccentColor"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="30" id="0Os-dF-YK2"/>
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emx-hA-gbq">
-                                                                    <rect key="frame" x="60" y="0.0" width="60" height="30"/>
+                                                                    <rect key="frame" x="39.333333333333343" y="0.0" width="60" height="30"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tC-E4-4Rr">
-                                                                    <rect key="frame" x="120" y="0.0" width="35" height="30"/>
+                                                                    <rect key="frame" x="99.333333333333329" y="0.0" width="55.666666666666671" height="30"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="plain" image="arrowshape.right.fill" catalog="system"/>
                                                                     <connections>
@@ -98,10 +101,10 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Pi-ax-3Yj">
-                                                            <rect key="frame" x="0.0" y="241.33333333333334" width="155" height="13.666666666666657"/>
+                                                            <rect key="frame" x="0.0" y="225.33333333333334" width="155" height="29.666666666666657"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="09/26/2023 • 10:56:00 am" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2tz-Tu-3pr">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="13.666666666666666"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="155" height="29.666666666666668"/>
                                                                     <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="10"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
@@ -171,7 +174,7 @@
         <!--Entry Details-->
         <scene sceneID="z12-cN-mfa">
             <objects>
-                <viewController id="ozg-ym-vVE" customClass="EntryDetailViewController" customModule="SongOfTheDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ozg-ym-vVE" customClass="EntryDetailViewController" customModule="Song_of_the_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UI6-Oa-bd9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -456,7 +459,7 @@
         <!--Create Entry-->
         <scene sceneID="mRb-v1-ZN7">
             <objects>
-                <viewController title="Create Entry" id="jY0-ra-zyO" customClass="CreateEntryViewController" customModule="SongOfTheDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Create Entry" id="jY0-ra-zyO" customClass="CreateEntryViewController" customModule="Song_of_the_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Iy-cE-UK9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -738,7 +741,7 @@
         <!--Song Select View Controller-->
         <scene sceneID="y1F-7N-IX5">
             <objects>
-                <viewController id="eMD-fN-xNs" customClass="SongSelectViewController" customModule="SongOfTheDay" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="eMD-fN-xNs" customClass="SongSelectViewController" customModule="Song_of_the_Day" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="a5r-Ev-OHu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -760,7 +763,7 @@
                                 <rect key="frame" x="0.0" y="56" width="393" height="786"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" rowHeight="130" id="Ltg-Tf-ixe" customClass="SongSelectTableViewCell" customModule="SongOfTheDay" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="songCell" rowHeight="130" id="Ltg-Tf-ixe" customClass="SongSelectTableViewCell" customModule="Song_of_the_Day" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ltg-Tf-ixe" id="9xF-RZ-y1v">

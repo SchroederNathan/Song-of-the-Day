@@ -49,7 +49,7 @@
 		439B930D2AEB80B7007AAF71 /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
 		439B930F2AEB80F6007AAF71 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		43CCBC392B0E95F600924E29 /* CustomAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimation.swift; sourceTree = "<group>"; };
-		43FEA9082AD8E05C000B0E2A /* SongOfTheDay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SongOfTheDay.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43FEA9082AD8E05C000B0E2A /* Song of the Day.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Song of the Day.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43FEA90B2AD8E05C000B0E2A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43FEA90D2AD8E05C000B0E2A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		43FEA90F2AD8E05C000B0E2A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 		43FEA9092AD8E05C000B0E2A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43FEA9082AD8E05C000B0E2A /* SongOfTheDay.app */,
+				43FEA9082AD8E05C000B0E2A /* Song of the Day.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -177,9 +177,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		43FEA9072AD8E05C000B0E2A /* SongOfTheDay */ = {
+		43FEA9072AD8E05C000B0E2A /* Song of the Day */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 43FEA91C2AD8E05E000B0E2A /* Build configuration list for PBXNativeTarget "SongOfTheDay" */;
+			buildConfigurationList = 43FEA91C2AD8E05E000B0E2A /* Build configuration list for PBXNativeTarget "Song of the Day" */;
 			buildPhases = (
 				43FEA9042AD8E05C000B0E2A /* Sources */,
 				43FEA9052AD8E05C000B0E2A /* Frameworks */,
@@ -189,9 +189,9 @@
 			);
 			dependencies = (
 			);
-			name = SongOfTheDay;
+			name = "Song of the Day";
 			productName = SongOfTheDay;
-			productReference = 43FEA9082AD8E05C000B0E2A /* SongOfTheDay.app */;
+			productReference = 43FEA9082AD8E05C000B0E2A /* Song of the Day.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -222,7 +222,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				43FEA9072AD8E05C000B0E2A /* SongOfTheDay */,
+				43FEA9072AD8E05C000B0E2A /* Song of the Day */,
 			);
 		};
 /* End PBXProject section */
@@ -477,7 +477,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		43FEA91C2AD8E05E000B0E2A /* Build configuration list for PBXNativeTarget "SongOfTheDay" */ = {
+		43FEA91C2AD8E05E000B0E2A /* Build configuration list for PBXNativeTarget "Song of the Day" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				43FEA91D2AD8E05E000B0E2A /* Debug */,
