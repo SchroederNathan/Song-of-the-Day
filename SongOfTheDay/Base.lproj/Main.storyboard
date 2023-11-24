@@ -721,6 +721,7 @@
                         <outlet property="albumImageView" destination="LIj-AG-h3f" id="YfM-o3-zwu"/>
                         <outlet property="albumNameLabel" destination="EFh-yR-nfP" id="bjx-TA-dTv"/>
                         <outlet property="artistNameLabel" destination="Pfc-7l-XcV" id="hWb-zT-bsE"/>
+                        <outlet property="audioButtonImage" destination="Iro-Xz-FoJ" id="pUY-Ks-nGy"/>
                         <outlet property="badDayButtonImage" destination="9pe-23-Ufo" id="o3I-Q2-taM"/>
                         <outlet property="goodDayButtonImage" destination="6EP-Qd-99y" id="2gD-9S-YBl"/>
                         <outlet property="messageBackground" destination="UMV-7R-JOb" id="byt-nc-rGC"/>

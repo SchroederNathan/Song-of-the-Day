@@ -37,6 +37,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var goodDayButtonImage: UIButton!
     @IBOutlet var badDayButtonImage: UIButton!
     @IBOutlet var messageBox: UITextView!
+    @IBOutlet var audioButtonImage: UIButton!
     
     
     @IBAction func addEntryButton(_ sender: UIBarButtonItem) {
@@ -145,7 +146,36 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         tap.cancelsTouchesInView = false
 
         view.addGestureRecognizer(tap)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+        swipeRight.direction = UISwipeGestureRecognizer.Direction.right
+        
+        songBackground.addGestureRecognizer(swipeRight)
+        //self.view.addGestureRecognizer(swipeRight)
 
+//        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(self.respondToSwipeGesture))
+//        swipeDown.direction = UISwipeGestureRecognizer.Direction.down
+//        self.view.addGestureRecognizer(swipeDown)
+
+    }
+    
+    @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {
+        if let swipeGesture = gesture as? UISwipeGestureRecognizer {
+            if swipeGesture.direction == UISwipeGestureRecognizer.Direction.right {
+                // Make current song empty
+                currentSong = nil
+                
+                // Reset song card UI
+                self.songNameLabel.text = "Song Name"
+                self.artistNameLabel.text = "Artist Name"
+                self.albumNameLabel.text = "Album Name"
+                self.albumImageView.image = UIImage(systemName: "questionmark.app.fill")
+                
+                togglePlayer(button: audioButtonImage)
+                progressView.progress = 0.0
+                
+            }
+        }
     }
     
     func doSomethingWith(data: FetchSong) {
@@ -226,13 +256,18 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         if isPlaying {
             isPlaying.toggle()
             // Change image
-            button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            if button.imageView?.image != UIImage(systemName: "play.circle.fill") {
+                button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
+            }
+
             progressView.progress = 0.0
             audioPlayer.pause()
         } else {
             isPlaying.toggle()
             // Change image
-            button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+            if button.imageView?.image != UIImage(systemName: "stop.circle.fill") {
+                button.setImage(UIImage(systemName: "stop.circle.fill"), for: .normal)
+            }
             audioPlayer.play()
         }
     }
