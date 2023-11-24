@@ -11,7 +11,6 @@ import AVKit
 class CreateEntryViewController: UIViewController, SongSelectViewControllerDelegate, UIGestureRecognizerDelegate {
 
     // MARK: - Properties
-    
     // Core data properties
     lazy private var coreDataStack = CoreDataStack.coreDataStack
     
@@ -99,6 +98,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
             
             newJournalEntry.song = newSong
             
+            // Save to core data
             coreDataStack.saveContext()
             
             print(newJournalEntry)
@@ -132,7 +132,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        
+        // Create corner radius for the views
         messageBackground.layer.cornerRadius = 15
         songBackground.layer.cornerRadius = 15
         albumImageView.layer.cornerRadius = 15
@@ -198,6 +198,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         }
     }
     
+    // Use data that was passed to the view controller
     func doSomethingWith(data: FetchSong) {
         
         // Setup the UI according to the selected song
@@ -373,6 +374,7 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
 
 }
 
+// MARK: Text Field Delegate
 extension CreateEntryViewController: UITextViewDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()

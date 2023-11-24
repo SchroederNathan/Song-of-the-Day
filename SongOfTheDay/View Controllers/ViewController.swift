@@ -11,11 +11,12 @@ import AVKit
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    //MARK: - Properties
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Journal>
 
+    // Journal to be passed to next detail view controller
     var passedJournal: Journal?
     
-    //MARK: - Properties
     var songs = [Song]()
     var journalEntrys = [Journal]()
     lazy private var coreDataStack = CoreDataStack.coreDataStack
@@ -58,6 +59,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
+    // Long press gesture to delete journal entries in edit mode
     func setupLongGestureRecognizerOnCollection() {
         let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
         longPressedGesture.minimumPressDuration = 0.5
@@ -66,6 +68,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         collectionView?.addGestureRecognizer(longPressedGesture)
     }
     
+    // Delete the items from core data and array when long press is triggered
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
         if (gestureRecognizer.state != .began) {
             return
@@ -76,20 +79,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             
             guard let indexPath = collectionView?.indexPathForItem(at: location) else { return }
             
+            // Find the selected cell
             let selectedEntry = journalEntrys[indexPath.row]
+            // Delete from core data stack
             coreDataStack.managedContext.delete(selectedEntry)
+            // Delete from array
             journalEntrys.remove(at: indexPath.row)
             
+            // Save core data and reload the collection view
             coreDataStack.saveContext()
             fetchJournalEntrys()
         }
     }
     
     func toggleEdit(navButton: UIBarButtonItem) {
+        // Edit mode on
         if editMode != true {
             self.title = "Long Press to Delete"
             navButton.image = UIImage(systemName: "checkmark")
             editMode.toggle()
+        // Edit mode off
         } else {
             self.title = "Journal Entries"
             navButton.image = UIImage(systemName: "pencil")
@@ -117,6 +126,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 cell?.badDayButton.image = UIImage(systemName: "hand.thumbsdown.fill")
             }
             
+            // Disable detail view buttons if edit mode is enabled
             if self.editMode {
                 cell?.viewEntryButtonImage.isHidden = true
             } else {
@@ -169,7 +179,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             url, response, error in
             if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    // Set the imageView to the current indexed movie
+                    // Set the imageView to the current song
                     cell.songArtwork.image = image
                 }
             }
@@ -181,19 +191,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        // Pass the movie that was tapped to the Detail View Controller
+        // Pass the entry that was tapped to the Detail View Controller
         guard let passed = passedJournal else { return }
         
+        // Pass the entry to the detail view controller
         if segue.identifier == "showSong" {
             let destinationVC = segue.destination as! EntryDetailViewController
             
             destinationVC.passedEntry = passed
             
         }
-        
     }
-
-
 }
 
 extension ViewController: CustomEntryCellDelegate {

@@ -45,12 +45,31 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
     @IBOutlet var playButtonImage: UIButton!
     @IBOutlet var progressView: UIProgressView!
     
+    // MARK: Actions
     @IBAction func editButton(_ sender: UIBarButtonItem) {
-        //navigationController?.navigationBar.titleTextAttributes = [ NSAttributedString.Key.foregroundColor : UIColor.accent ]
         toggleEdit(navButton: sender)
+    }
+
+    @IBAction func goodDayButton(_ sender: UIButton) {
+        if editMode {
+            moodToggle(mood: true)
+            print(currentMood!)
+        }
+    }
+    @IBAction func badDayButton(_ sender: UIButton) {
+        if editMode {
+            moodToggle(mood: false)
+            print(currentMood!)
+            
+        }
+    }
+    
+    @IBAction func playAudioButton(_ sender: UIButton) {
+        playSong(forUrl: currentSong.previewUrl!, progressView: progressView, button: sender)
 
     }
     
+    // MARK: Toggle methods
     func toggleEdit(navButton: UIBarButtonItem) {
         if editMode != true {
             selectSongButtonImage.isHidden = false
@@ -72,26 +91,6 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
             messageLabel.isEditable = false
             editMode.toggle()
         }
-
-    }
-    
-    // MARK: - Actions
-    @IBAction func goodDayButton(_ sender: UIButton) {
-        if editMode {
-            moodToggle(mood: true)
-            print(currentMood!)
-        }
-    }
-    @IBAction func badDayButton(_ sender: UIButton) {
-        if editMode {
-            moodToggle(mood: false)
-            print(currentMood!)
-            
-        }
-    }
-    
-    @IBAction func playAudioButton(_ sender: UIButton) {
-        playSong(forUrl: currentSong.previewUrl!, progressView: progressView, button: sender)
 
     }
     
@@ -164,7 +163,7 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
             url, response, error in
             if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    // Set the imageView to the current indexed movie
+                    // Set the imageView to the current song
                     albumImage.image = image
                 }
             }
@@ -173,6 +172,7 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         imageFetchTask.resume()
     }
     
+    // Use data that was passed to the view controller
     func doSomethingWith(data: FetchSong) {
         
         // Setup the UI according to the selected song
@@ -186,8 +186,6 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
         currentSong.collectionName = data.collectionName
         currentSong.previewUrl = data.previewUrl
         currentSong.artworkUrl100 = data.artworkUrl100
-        
-        print(currentSong ?? data)
     }
     
     // MARK: - Audio methods

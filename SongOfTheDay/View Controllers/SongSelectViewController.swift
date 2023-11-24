@@ -36,7 +36,7 @@ class SongSelectViewController: UIViewController {
     }
     
     
-    // MARK: - Data Source Properties
+    // MARK: - Data Source Methods
     
     func createDataSource() -> DataSource {
         let dataSource = DataSource(tableView: tableView) { tableView, indexPath, song in
@@ -87,7 +87,7 @@ class SongSelectViewController: UIViewController {
             url, response, error in
             if error == nil, let url = url, let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    // Set the imageView to the current indexed movie
+                    // Set the imageView to the current indexed song
                     cell.songArtwork.image = image
                 }
             }
@@ -168,8 +168,7 @@ class SongSelectViewController: UIViewController {
 
 }
 
-
-
+// MARK: Search bar delegate
 extension SongSelectViewController: UISearchBarDelegate {
     
     // Function used when the user taps search or the enter button on the keyboard
@@ -233,12 +232,14 @@ extension SongSelectViewController: CustomCellDelegate {
     }
     
     func togglePlayer(button: UIButton, progressView: UIProgressView) {
+        // Turn off
         if isPlaying {
             isPlaying.toggle()
             // Change image
             button.setImage(UIImage(systemName: "play.circle.fill"), for: .normal)
             progressView.progress = 0.0
             audioPlayer.pause()
+        // Turn on
         } else {
             isPlaying.toggle()
             // Change image
@@ -264,7 +265,6 @@ extension SongSelectViewController: CustomCellDelegate {
     
 }
 // MARK: - Protocol
-
 protocol SongSelectViewControllerDelegate : NSObjectProtocol{
     func doSomethingWith(data: FetchSong)
 
