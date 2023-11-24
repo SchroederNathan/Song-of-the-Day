@@ -10,6 +10,8 @@
 		430EFFDA2AF2DFF000C40EBA /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430EFFD92AF2DFF000C40EBA /* CoreDataStack.swift */; };
 		430EFFE82AF2F97100C40EBA /* SongSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430EFFE72AF2F97100C40EBA /* SongSelectViewController.swift */; };
 		430EFFEA2AF2FCEC00C40EBA /* SongSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 430EFFE92AF2FCEC00C40EBA /* SongSelectTableViewCell.swift */; };
+		4343E5C72B10530C00423BA1 /* OpenSans_Condensed-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4343E5C62B10530C00423BA1 /* OpenSans_Condensed-Bold.ttf */; };
+		4343E5C82B1056FE00423BA1 /* OpenSans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4361B7D42B0FF00D00402966 /* OpenSans.ttf */; };
 		43662B062AF30087001F2DD5 /* JournalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 43662B042AF30087001F2DD5 /* JournalModel.xcdatamodeld */; };
 		43662B1B2AF5D02E001F2DD5 /* Journal+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B172AF5D02E001F2DD5 /* Journal+CoreDataClass.swift */; };
 		43662B1C2AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43662B182AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift */; };
@@ -34,6 +36,8 @@
 		430EFFD92AF2DFF000C40EBA /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		430EFFE72AF2F97100C40EBA /* SongSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectViewController.swift; sourceTree = "<group>"; };
 		430EFFE92AF2FCEC00C40EBA /* SongSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongSelectTableViewCell.swift; sourceTree = "<group>"; };
+		4343E5C62B10530C00423BA1 /* OpenSans_Condensed-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans_Condensed-Bold.ttf"; sourceTree = "<group>"; };
+		4361B7D42B0FF00D00402966 /* OpenSans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSans.ttf; sourceTree = "<group>"; };
 		43662B052AF30087001F2DD5 /* JournalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JournalModel.xcdatamodel; sourceTree = "<group>"; };
 		43662B172AF5D02E001F2DD5 /* Journal+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		43662B182AF5D02E001F2DD5 /* Journal+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Journal+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
@@ -90,6 +94,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		4361B7D22B0FEF3B00402966 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4361B7D42B0FF00D00402966 /* OpenSans.ttf */,
+				4343E5C62B10530C00423BA1 /* OpenSans_Condensed-Bold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		439B930C2AEB7F76007AAF71 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 				430EFFD02AF2DA7D00C40EBA /* CoreData Model */,
 				43FEA9222AD8E1C6000B0E2A /* Delegates */,
 				43CCBC382B0E95DF00924E29 /* Views */,
+				4361B7D22B0FEF3B00402966 /* Fonts */,
 				43FEA9212AD8E1BE000B0E2A /* View Controllers */,
 				439B930C2AEB7F76007AAF71 /* Models */,
 				430EFFEB2AF2FCF100C40EBA /* Cells */,
@@ -220,6 +234,8 @@
 			files = (
 				43FEA9182AD8E05E000B0E2A /* LaunchScreen.storyboard in Resources */,
 				43FEA9152AD8E05E000B0E2A /* Assets.xcassets in Resources */,
+				4343E5C72B10530C00423BA1 /* OpenSans_Condensed-Bold.ttf in Resources */,
+				4343E5C82B1056FE00423BA1 /* OpenSans.ttf in Resources */,
 				43FEA9132AD8E05C000B0E2A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

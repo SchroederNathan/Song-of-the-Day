@@ -41,6 +41,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if let customFont = UIFont(name: "OpenSans_Condensed-Bold.ttf", size: 30) {
+            print("font is valid")
+            navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.font: customFont]
+        }
+        
+        
         // Make title large
         navigationController?.navigationBar.prefersLargeTitles = true
         setupLongGestureRecognizerOnCollection()

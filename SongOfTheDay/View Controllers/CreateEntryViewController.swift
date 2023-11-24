@@ -272,31 +272,32 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         DispatchQueue.main.asyncAfter(deadline: .now()+delay, execute:  {
             // Change back to viewcontroller.swift
             self.tabBarController?.selectedIndex = 0
-        })
-        
-        // Get rid of the visual effects from animation
-        for subview in self.view.subviews {
-            if subview is UIVisualEffectView {
-                subview.removeFromSuperview()
+            
+            // Get rid of the visual effects from animation
+            for subview in self.view.subviews {
+                if subview is UIVisualEffectView {
+                    subview.removeFromSuperview()
+                }
             }
-        }
-        
-        // Reset objects
-        self.currentMood = nil
-        self.messageBox.text = ""
-        self.currentSong = nil
-        
-        // Reset the mood button images
-        self.goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
-        self.badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
-        
-        // Reset song card UI
-        self.songNameLabel.text = "Song Name"
-        self.artistNameLabel.text = "Artist Name"
-        self.albumNameLabel.text = "Album Name"
-        self.albumImageView.image = UIImage(systemName: "questionmark.app.fill")
-        
-        self.view.isUserInteractionEnabled = true
+            
+            // Reset objects
+            self.currentMood = nil
+            self.messageBox.text = ""
+            self.currentSong = nil
+            
+            // Reset the mood button images
+            self.goodDayButtonImage.setImage(UIImage(systemName: "hand.thumbsup"), for: .normal)
+            self.badDayButtonImage.setImage(UIImage(systemName: "hand.thumbsdown"), for: .normal)
+            
+            // Reset song card UI
+            self.songNameLabel.text = "Song Name"
+            self.artistNameLabel.text = "Artist Name"
+            self.albumNameLabel.text = "Album Name"
+            self.albumImageView.image = UIImage(systemName: "questionmark.app.fill")
+            
+            self.view.isUserInteractionEnabled = true
+        })
+
     }
     
     // MARK: - Navigation
