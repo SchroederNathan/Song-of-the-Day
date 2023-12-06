@@ -155,12 +155,11 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         songBackground.addGestureRecognizer(swipeRight)
         
         // Long press gesture on album image to scale image 2X
-        let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(imageTapped(longPressGestureRecognizer:)))
+        let longPressGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         albumImageView.isUserInteractionEnabled = true
         albumImageView.addGestureRecognizer(longPressGestureRecognizer)
         
         // Long press properties
-        longPressGestureRecognizer.minimumPressDuration = 0.5
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.delaysTouchesBegan = true
 
@@ -169,14 +168,29 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
     // MARK: Gesture recognizer methods
     
     // Long press gesture to scale image
-    @objc func imageTapped(longPressGestureRecognizer: UILongPressGestureRecognizer) {
-        let tappedImage = longPressGestureRecognizer.view as! UIImageView
-        let currentFrame = tappedImage.frame;
-        // get existing width and height of image and double it
-        UIView.animate(withDuration: 0.5) {
-            tappedImage.frame = CGRect(x: 0, y: 0, width: currentFrame.width * 200, height: currentFrame.height * 200);
-        }
-    }
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+
+           let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+           // get existing width and height of image and double it
+
+           UIView.animate(withDuration: 1) {
+
+               //transform the image to 1.5 x its size
+
+               tappedImage.transform = CGAffineTransform(scaleX: 1.23, y: 1.23)
+
+           } completion: { _ in
+
+                 //when the animation is completed – return it back to its original size
+
+               UIView.animate(withDuration: 2.5) {
+
+                   tappedImage.transform = .identity
+
+               }
+           }
+       }
     
     // Swipe gessture to delete current selected song
     @objc func respondToSwipeGesture(gesture: UIGestureRecognizer) {

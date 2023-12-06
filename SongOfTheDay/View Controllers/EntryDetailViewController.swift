@@ -9,7 +9,7 @@ import UIKit
 import CoreData
 import AVKit
 
-class EntryDetailViewController: UIViewController, SongSelectViewControllerDelegate {
+class EntryDetailViewController: UIViewController, SongSelectViewControllerDelegate, UIGestureRecognizerDelegate {
     
     // Core data stack
     lazy private var coreDataStack = CoreDataStack.coreDataStack
@@ -147,7 +147,43 @@ class EntryDetailViewController: UIViewController, SongSelectViewControllerDeleg
 
         view.addGestureRecognizer(tap)
         
+        // Long press gesture on album image to scale image 2X
+        let longPressGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        albumImageView.isUserInteractionEnabled = true
+        albumImageView.addGestureRecognizer(longPressGestureRecognizer)
+        
+        // Long press properties
+        longPressGestureRecognizer.delegate = self
+        longPressGestureRecognizer.delaysTouchesBegan = true
+
     }
+    
+    // MARK: Gesture recognizer methods
+    
+    // Long press gesture to scale image
+    @objc func imageTapped(tapGestureRecognizer: UITapGestureRecognizer) {
+
+           let tappedImage = tapGestureRecognizer.view as! UIImageView
+
+           // get existing width and height of image and double it
+
+           UIView.animate(withDuration: 1) {
+
+               //transform the image to 1.5 x its size
+
+               tappedImage.transform = CGAffineTransform(scaleX: 1.23, y: 1.23)
+
+           } completion: { _ in
+
+                 //when the animation is completed – return it back to its original size
+
+               UIView.animate(withDuration: 2.5) {
+
+                   tappedImage.transform = .identity
+
+               }
+           }
+       }
     
     override func viewDidDisappear(_ animated: Bool) {
         // Pauses the audio once song is either selected or view is closed

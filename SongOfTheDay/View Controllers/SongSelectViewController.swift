@@ -8,7 +8,7 @@
 import UIKit
 import AVKit
 
-class SongSelectViewController: UIViewController {
+class SongSelectViewController: UIViewController, UIGestureRecognizerDelegate {
     
     weak var delegate : SongSelectViewControllerDelegate?
 
