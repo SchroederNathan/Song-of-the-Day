@@ -14,6 +14,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // Set custom tab bar font
+        if let customFont = UIFont(name: "Open Sans Regular Regular", size: 10) {
+            UITabBarItem.appearance().setTitleTextAttributes([NSAttributedString.Key.font: customFont], for: .normal)
+        }
+
         return true
     }
 

@@ -327,11 +327,11 @@
                                                 </subviews>
                                                 <color key="backgroundColor" name="CardColors"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="707-uP-w6k" secondAttribute="trailing" constant="60" id="4KO-kJ-na8"/>
                                                     <constraint firstAttribute="bottom" secondItem="8S6-qK-KdC" secondAttribute="bottom" constant="10" id="6dx-hA-aHa"/>
-                                                    <constraint firstAttribute="trailing" secondItem="8S6-qK-KdC" secondAttribute="trailing" constant="10" id="EFY-ro-2pl"/>
                                                     <constraint firstItem="8S6-qK-KdC" firstAttribute="leading" secondItem="K7q-Tr-kxf" secondAttribute="leading" constant="10" id="Lyc-Wa-G7U"/>
+                                                    <constraint firstAttribute="trailing" secondItem="8S6-qK-KdC" secondAttribute="trailing" constant="10" id="TSW-JV-Trm"/>
                                                     <constraint firstItem="8S6-qK-KdC" firstAttribute="top" secondItem="K7q-Tr-kxf" secondAttribute="top" constant="10" id="guD-gg-GYD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="707-uP-w6k" secondAttribute="trailing" constant="60" id="us8-W5-Mwv"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mood" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EAa-C7-W0m">
@@ -612,10 +612,10 @@
                                                 <color key="backgroundColor" name="CardColors"/>
                                                 <constraints>
                                                     <constraint firstItem="KXj-JW-ejU" firstAttribute="leading" secondItem="3al-a3-ZSW" secondAttribute="leading" constant="10" id="71z-JQ-fHX"/>
-                                                    <constraint firstAttribute="trailing" secondItem="fyt-Pm-aTe" secondAttribute="trailing" constant="60" id="DRq-3n-DZm"/>
                                                     <constraint firstItem="KXj-JW-ejU" firstAttribute="top" secondItem="3al-a3-ZSW" secondAttribute="top" constant="10" id="ena-fI-rXQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="KXj-JW-ejU" secondAttribute="trailing" constant="10" id="jXC-nG-yVE"/>
                                                     <constraint firstAttribute="bottom" secondItem="KXj-JW-ejU" secondAttribute="bottom" constant="10" id="k4I-HY-tHr"/>
+                                                    <constraint firstAttribute="trailing" secondItem="fyt-Pm-aTe" secondAttribute="trailing" constant="60" id="wDo-hE-dyO"/>
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How are you feeling today?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICL-TI-KDO">
@@ -1030,7 +1030,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qlG-rC-LFB"/>
+        <segue reference="RJe-ua-8FO"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="arrowshape.right.fill" catalog="system" width="128" height="104"/>

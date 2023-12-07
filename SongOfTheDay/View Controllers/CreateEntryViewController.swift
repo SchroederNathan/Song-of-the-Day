@@ -162,6 +162,18 @@ class CreateEntryViewController: UIViewController, SongSelectViewControllerDeleg
         // Long press properties
         longPressGestureRecognizer.delegate = self
         longPressGestureRecognizer.delaysTouchesBegan = true
+        
+        for fontFamilyName in UIFont.familyNames{
+            for fontName in UIFont.fontNames(forFamilyName: fontFamilyName){
+                print("Family: \(fontFamilyName)     Font: \(fontName)")
+            }
+        }
+        
+        // Set custom font to title
+        if let customFont = UIFont(name: "Open Sans Regular Condensed Bold", size: 40) {
+            navigationController?.navigationBar.largeTitleTextAttributes =
+            [NSAttributedString.Key.font: customFont]            
+        }
 
     }
     
